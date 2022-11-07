@@ -1,0 +1,57 @@
+<%- include('../partials/header') %>
+    <h1>
+        <%= title %>
+    </h1>
+
+    <a id="add-venue" href="/venues/new">Add Venue</a>
+
+
+    <section id="venue-list">
+        <h2>Current Venues</h2>
+        <%venues.forEach(function(v){  %>
+            <div>
+                <%= v.name %>
+            </div>
+            <div>
+                <%= v.city %>
+            </div>
+            <div>
+                <%= v.state %>
+            </div>
+            <div>
+                <a href="/venues/<%= v._id %>">SELECT</a>
+            </div>
+
+            <%}); %>
+    </section>
+
+    <section id="venue-details">
+        <h2>Venue Details</h2>
+
+
+        <div>
+            Venue Name:
+            <%= venue.name %>
+        </div>
+        <div>
+            City:
+            <%= venue.city %>
+        </div>
+        <div>
+            State:
+            <%= venue.state %>
+        </div>
+        <div>
+            Power Service:
+            <%= venue.power %>
+        </div>
+        <div>
+            Union:
+            <%= venue.union %>
+        </div>
+
+
+
+    </section>
+
+    <%- include('../partials/footer') %>

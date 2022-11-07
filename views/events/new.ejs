@@ -1,0 +1,60 @@
+<%- include('../partials/header') %>
+
+
+    <h1>
+        <%= title %>
+    </h1>
+
+    <section id="event-list">
+        <h2>Current Events</h2>
+        <%events.forEach(function(e){  %>
+            <div>
+                <%= e.name %>
+            </div>
+            <div>
+                <%= e.city %>
+            </div>
+            <div>
+                <%= e.state %>
+            </div>
+
+            <%}); %>
+
+    </section>
+
+    <section id="event-details-input">
+        <h2>Enter New event</h2>
+        <form id="form-new-event" action="/events" method="POST">
+            <label>Event Name:</label>
+            <input type="text" name="name">
+            <label>Client/Promoter:</label>
+            <input type="text" name="client">
+            <label>Event Date/Time:</label>
+            <input type="datetime-local" name="date">
+            <!-- <label>Venue:</label>
+            <input type="text" name="venue"> -->
+            <label>City:</label>
+            <input type="text" name="city">
+            <label>State: </label>
+            <input type="text" name="state">
+            <label>Duration:</label>
+            <input type="number" name="duration">
+            <label>Venues:</label>
+            <select name="venue">
+            <%  venues.forEach(function(v){ %>
+                <option value="<%= v._id %> "><%= v.name %> </option>
+            <% }) %> 
+             </select>
+            <label>Workers:</label>
+            <select name="workers">
+                <%  workers.forEach(function(w){ %>
+                    <option value="<%= w._id %> "><%= w.name %> </option>
+                <% }) %> 
+                 </select>
+
+            <input id="add-event-button" type="submit" value="Add event">
+        </form>
+
+    </section>
+
+    <%- include('../partials/footer') %>

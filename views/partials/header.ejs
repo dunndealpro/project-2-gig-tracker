@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/stylesheets/style.css">
+    <title>
+        <%= title %>
+    </title>
+</head>
+
+<body>
+    <nav>
+        <% if (user) { %>
+            <a href="/" class="login"><img src="public/images/stage-1.png"></a>
+            <img src="public/images/stage-1.png">
+            <a href="/venues" <%- title==='Venues' ? 'class="active"' : '' %>>VENUES</a>
+            <a href="/events" <%- title==='Events' ? 'class="active"' : '' %>>EVENTS</a>
+            <a href="/workers" <%- title==='Workers' ? 'class="active"' : '' %>>WORKERS</a>
+            <a href="/logout">LOG OUT</a>
+            <% } else { %>
+                <a href="/auth/google" class="login">LOG IN&nbsp;<img src="https://i.imgur.com/FHjYyi0.png"></a>
+                <% } %>
+    </nav>
+
+    <main>

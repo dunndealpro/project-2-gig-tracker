@@ -1,0 +1,34 @@
+<%- include('../partials/header') %>
+
+    <h1>
+        <%= title %>
+    </h1>
+
+    <a id="add-worker" href="/workers/new">Add worker</a>
+
+
+    <section id="worker-list">
+        <h2>Current workers</h2>
+        <%workers.forEach(function(w){  %>
+            <div>
+                <%= w.name %>
+            </div>
+            <div>
+                <%= w.city %>
+            </div>
+            <div>
+                <%= w.state %>
+            </div>
+            <div>
+                <a href="/workers/<%= w._id %>">SELECT</a>
+            </div>
+
+            <%}); %>
+    </section>
+
+    <section id="worker-details">
+        <h2>Worker Details</h2>
+
+    </section>
+
+    <%- include('../partials/footer') %>

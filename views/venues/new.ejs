@@ -1,0 +1,51 @@
+<%- include('../partials/header') %>
+
+
+    <h1>Welcome to
+        <%= title %>
+    </h1>
+
+    <section id="venue-list">
+        <h2>Current Venues</h2>
+        <%venues.forEach(function(v){  %>
+            <div>
+                <%= v.name %>
+            </div>
+            <div>
+                <%= v.city %>
+            </div>
+            <div>
+                <%= v.state %>
+            </div>
+
+            <%}); %>
+
+    </section>
+
+    <section id="venue-details-input">
+        <h2>Enter New Venue</h2>
+        <form id="form-new-venue" action="/venues" method="POST">
+            <label>Name:</label>
+            <input type="text" name="name">
+            <label>City:</label>
+            <input type="text" name="city">
+            <label>State: </label>
+            <input type="text" name="state">
+            <label>Power:</label>
+            <select name="power">
+                <option value="1 PHASE 100A">Single-Phase - 100A</option>
+                <option value="3 PHASE 100A">3-Phase - 100A</option>
+                <option value="3 PHASE 200A">3-Phase - 200A</option>
+                <option value="3 PHASE 400A">3-Phase - 400A</option>
+            </select>
+            <label>Union:</label>
+            <select name="union">
+                <option value="true">yes</option>
+                <option value="false">no</option>
+            </select>
+            <input id="add-venue-button" type="submit" value="Add Venue">
+        </form>
+
+    </section>
+
+    <%- include('../partials/footer') %>

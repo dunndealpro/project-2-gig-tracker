@@ -1,0 +1,62 @@
+<%- include('../partials/header') %>
+
+
+    <h1>
+        <%= title %>
+    </h1>
+
+    <section id="worker-list">
+        <h2>Current workers</h2>
+        <%workers.forEach(function(w){  %>
+            <div>
+                <%= w.name %>
+            </div>
+            <div>
+                <%= w.city %>
+            </div>
+            <div>
+                <%= w.state %>
+            </div>
+            <div>
+                <a href="/workers/<%= w._id %>">SELECT</a>
+            </div>
+
+            <%}); %>
+    </section>
+
+    <section id="worker-details-input">
+        <h2>Enter New worker</h2>
+        <form id="form-new-worker" action="/workers" method="POST">
+            <label>Name:</label>
+            <input type="text" name="name">
+            <label>Phone Number:</label>
+            <input type="number" name="phoneNumber">
+            <label>City:</label>
+            <input type="text" name="city">
+            <label>State: </label>
+            <input type="text" name="state">
+            <label>Specialty:</label>
+            <select name="specialty">
+                <option value="none" selected disabled hidden>Select a Specialty</option>
+                <option value="audioEngineer">Audio Engineer</option>
+                <option value="audioTech">Audio Tech</option>
+                <option value='lightingEngineer'>Lighting Engineer</option>
+                <option value='lightingTech'>Lighting Tech</option>
+                <option value="video">Video</option>
+                <option value="rigging">Rigging</option>
+                <option value="stagehand">Stage Hand</option>
+
+            </select>
+
+            <label>Day Rate: </label>
+            <input type="number" name="dayRate">
+            <!-- <label>Venues Worked at: </label> -->
+            <!-- insert forEach loop here to create check box options -->
+
+
+            <input id="add-worker-button" type="submit" value="Add Worker">
+        </form>
+
+    </section>
+
+    <%- include('../partials/footer') %>
