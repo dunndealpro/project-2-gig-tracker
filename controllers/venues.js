@@ -1,5 +1,6 @@
 const Worker = require('../models/worker');
-const Venue = require('../models/venue')
+const Venue = require('../models/venue');
+const Event = require('../models/event')
 
 
 module.exports = {
@@ -25,6 +26,8 @@ function newVenue(req, res) {
 
 function create(req, res) {
     var venue = new Venue(req.body);
+    console.log(venue)
+    console.log(req.body)
     venue.save(function(err) {
         if (err) return res.redirect('/venues/new');
         res.redirect(`/venues/${venue._id}`)

@@ -30,27 +30,27 @@
             <label>Client/Promoter:</label>
             <input type="text" name="client">
             <label>Event Date/Time:</label>
-            <input type="datetime-local" name="date">
-            <!-- <label>Venue:</label>
-            <input type="text" name="venue"> -->
-            <label>City:</label>
-            <input type="text" name="city">
-            <label>State: </label>
-            <input type="text" name="state">
-            <label>Duration:</label>
-            <input type="number" name="duration">
+            <input type="datetime-local" name="date" value="<%=defaultDate%>">
             <label>Venues:</label>
             <select name="venue">
             <%  venues.forEach(function(v){ %>
-                <option value="<%= v._id %> "><%= v.name %> </option>
-            <% }) %> 
+                <option value="<%=v._id%>"><%=v.name%></option>
+            <%})%> 
              </select>
+            <!-- <label>Venue:</label>
+            <input type="text" name="venue"> -->
+            <!-- <label>City:</label>
+            <input type="text" name="city">
+            <label>State: </label>
+            <input type="text" name="state"> -->
+            <label>Duration:</label>
+            <input type="number" name="duration">
             <label>Workers:</label>
-            <select name="workers">
+            <!-- <select name="workers">
                 <%  workers.forEach(function(w){ %>
                     <option value="<%= w._id %> "><%= w.name %> </option>
                 <% }) %> 
-                 </select>
+                 </select> -->
 
             <input id="add-event-button" type="submit" value="Add event">
         </form>
