@@ -26,7 +26,7 @@
     </section>
 
     <section id="event-details">
-        <h2>event Details</h2>
+        <h2>Event Details</h2>
 
         <div>
             Event Name:
@@ -57,10 +57,20 @@
             Duration:
             <%= event.duration %>
         </div>
+        <div>
+            Workers:
+            <%= event.workers %>
+        </div>
 
-
-
-
+        <div>Add Workers to Event</div>
+        <form id="add-worker-to-event" action="/events/<%= event._id %>/workers" method="POST">
+            <select name="workerId">
+            <%- workers.map(w => `<option value="${w._id}">${w.name}</option>`) %> 
+            </select>
+            <button type="submit">Add Worker to Event</button>
+        </form>
     </section>
+
+
 
     <%- include('../partials/footer') %>

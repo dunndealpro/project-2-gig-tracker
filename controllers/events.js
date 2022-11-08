@@ -6,7 +6,18 @@ module.exports = {
     index,
     new: newEvent,
     create,
-    show
+    show,
+    addToEvent
+}
+
+function addToEvent(req, res) {
+    Event.findById(req.params.id, function(err, event) {
+        event.workers.push(req.body.workerId)
+        event.save(function(err) {
+            res.redirect(`/events/${event._id}`);
+        })
+    })
+
 }
 
 function index(req, res) {
@@ -29,21 +40,6 @@ function newEvent(req, res) {
         })
     });
 };
-
-// function create(req, res) {
-//     var event = new Event(req.body);
-//     event.venue = req.body.venue
-//     console.log(req.body.venue)
-//     console.log("Event Name: ")
-//     console.log(event.name)
-//     console.log("Event Venue: ")
-//     console.log(event.venue)
-//     event.save(function(err) {
-//         if (err) return res.redirect('/events/new');
-
-//         res.redirect(`/events/${event._id}`)
-//     })
-// }
 
 function create(req, res) {
 
@@ -70,37 +66,19 @@ function create(req, res) {
 function show(req, res) {
     Event.find({}, function(err, events) {
         Event.findById(req.params.id, function(err, event) {
-            console.log("Venue Find ? ")
-            console.log(event.venue)
-            Venue.findById(event.venue, function(err, venue) {
-                console.log(venue)
-                console.log(event)
-                console.log("New Event Yass!?")
-                    // console.log(events)
-                res.render('events/show', { title: 'Details', events, event, venue });
+            Worker.find({}, function(err, workers) {
+                console.log(workers)
+                console.log("Venue Find ? ")
+                console.log(event.venue)
+                Venue.findById(event.venue, function(err, venue) {
+                    console.log(venue)
+                    console.log(event)
+                    console.log("New Event Yass!?")
+                        // console.log(events)
+                    res.render('events/show', { title: 'Details', events, event, venue, workers });
+
+                })
             })
         });
     });
 }
-
-
-// function create(req, res) {
-
-//     var event = new Event(req.body);
-//     Venue.findById(`"${req.body.venue}"`, function(err, venueId) {
-//         console.log('Venue dot find')
-//         console.log(venueId)
-//         event.venue = req.body.venue
-//         console.log(req.body.venue)
-//         console.log("Event Name: ")
-//         console.log(event.name)
-//         console.log("Event Venue: ")
-//         console.log(event.venue)
-//         event.save(function(err) {
-//             if (err) return res.redirect('/events/new');
-
-//             res.redirect(`/events/${event._id}`)
-//         })
-
-//     })
-// }
