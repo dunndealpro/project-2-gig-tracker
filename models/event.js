@@ -6,9 +6,9 @@ const eventSchema = new Schema({
     client: String,
     date: Date,
     // venue: String,
-    venue: { type: Schema.Types.ObjectId, ref: 'Venue' },
+    venue: { type: Schema.Types.ObjectId, ref: 'VenueId' },
     duration: Number,
-    // workers: [{ type: Schema.Types.ObjectId, ref: 'Worker' }]
+    workers: [{ type: Schema.Types.ObjectId, ref: 'Worker' }]
 }, {
     timeStamps: true
 });

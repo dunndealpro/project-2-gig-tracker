@@ -1,10 +1,14 @@
 var express = require('express');
 var router = express.Router();
 var workersCtrl = require('../controllers/workers')
+const isLoggedIn = require('../config/auth');
 
-router.get('/', workersCtrl.index);
-router.get('/new', workersCtrl.new);
-router.get('/:id', workersCtrl.show);
-router.post('/', workersCtrl.create);
+
+
+router.get('/workers/', isLoggedIn, workersCtrl.index);
+router.get('/workers/new', isLoggedIn, workersCtrl.new);
+router.get('/workers/:id', isLoggedIn, workersCtrl.show);
+router.post('/workers/', isLoggedIn, workersCtrl.create);
+router.post('/events/:id/worker', isLoggedIn, workersCtrl.addToEvent);
 
 module.exports = router

@@ -6,31 +6,43 @@
     <a id="add-worker" href="/workers/new">Add worker</a>
 
 
-    <section id="worker-list">
-        <h2>Current workers</h2>
-        <%workers.forEach(function(v){  %>
-            <div>
-                <%= v.name %>
-            </div>
-            <div>
-                <%= v.city %>
-            </div>
-            <div>
-                <%= v.state %>
-            </div>
-            <div>
-                <a href="/workers/<%= v._id %>">SELECT</a>
-            </div>
 
-            <%}); %>
-    </section>
+
+    <table id="worker-list">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>City</th>
+                <th>State</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <%workers.forEach(function(w){  %>
+                <tr>
+                    <td>
+                        <%= w.name %>
+                    </td>
+                    <td>
+                        <%= w.city %>
+                    </td>
+                    <td>
+                        <%= w.state %>
+                    </td>
+                    <td><a href="/workers/<%= w._id %>">SELECT</a></td>
+                </tr>
+                <%}); %>
+
+        </tbody>
+
+    </table>
 
     <section id="worker-details">
-        <h2>worker Details</h2>
+        <h2>Worker Details</h2>
 
 
         <div>
-            worker Name:
+            Name:
             <%= worker.name %>
         </div>
         <div>
@@ -38,8 +50,20 @@
             <%= worker.city %>
         </div>
         <div>
+            Phone Number:
+            <%= worker.phoneNumber %>
+        </div>
+        <div>
             State:
             <%= worker.state %>
+        </div>
+        <div>
+            Specialty:
+            <%= worker.specialty %>
+        </div>
+        <div>
+            Day Rate:
+            <%= worker.dayRate %>
         </div>
 
 

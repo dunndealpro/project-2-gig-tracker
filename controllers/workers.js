@@ -1,12 +1,28 @@
 const Worker = require('../models/worker')
 const Venue = require('../models/venue')
+const Event = require('../models/event')
 
 module.exports = {
     index,
     new: newWorker,
     show,
-    create
+    create,
+    addToEvent,
 }
+
+function addToEvent(req, res) {
+    console.log('worker push? 1')
+    Event.findById(req.params.id, function(err, event) {
+        console.log('worker push? 2')
+        event.workers.push(req.body.workerId)
+        event.save(function(err) {
+            if (err) console.log(err)
+            res.redirect(`/events/${event._id}`);
+        })
+    })
+}
+
+
 
 function index(req, res) {
     Worker.find({}, function(err, workers) {

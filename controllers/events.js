@@ -11,7 +11,9 @@ module.exports = {
 }
 
 function addToEvent(req, res) {
+    console.log("wanna do me a push?")
     Event.findById(req.params.id, function(err, event) {
+        console.log('worker push?')
         event.workers.push(req.body.workerId)
         event.save(function(err) {
             res.redirect(`/events/${event._id}`);
@@ -65,20 +67,33 @@ function create(req, res) {
 
 function show(req, res) {
     Event.find({}, function(err, events) {
-        Event.findById(req.params.id, function(err, event) {
-            Worker.find({}, function(err, workers) {
-                console.log(workers)
-                console.log("Venue Find ? ")
-                console.log(event.venue)
-                Venue.findById(event.venue, function(err, venue) {
-                    console.log(venue)
-                    console.log(event)
-                    console.log("New Event Yass!?")
-                        // console.log(events)
-                    res.render('events/show', { title: 'Details', events, event, venue, workers });
-
+        Event.findById(req.params.id).populate('workers').exec(function(err, event) {
+            Worker.find({ _id: { $nin: events.workers } })
+                .exec(function(err, workers) {
+                    Venue.findById(event.venue, function(err, venue) {
+                        res.render('events/show', { title: 'Details', events, event, venue, workers });
+                    })
                 })
-            })
         });
     });
 }
+
+// function show(req, res) {
+//     Event.find({}, function(err, events) {
+//         Event.findById(req.params.id, function(err, event) {
+//             Worker.find({}, function(err, workers) {
+//                 // console.log(workers)
+//                 // console.log("Venue Find ? ")
+//                 // console.log(event.venue)
+//                 Venue.findById(event.venue, function(err, venue) {
+//                     // console.log(venue)
+//                     // console.log(event)
+//                     // console.log("New Event Yass!?")
+//                     // console.log(events)
+//                     res.render('events/show', { title: 'Details', events, event, venue, workers });
+
+//                 })
+//             })
+//         });
+//     });
+// }

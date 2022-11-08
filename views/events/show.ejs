@@ -59,11 +59,16 @@
         </div>
         <div>
             Workers:
-            <%= event.workers %>
+            <ul>
+                <%- event.workers.map(w => 
+                  `<li>${w.name} <small>${w.specialty}</small></li>`
+                ).join('') %>
+            </ul>
         </div>
+        <br>
 
         <div>Add Workers to Event</div>
-        <form id="add-worker-to-event" action="/events/<%= event._id %>/workers" method="POST">
+        <form id="add-worker-to-event" action="/events/<%= event._id %>/worker" method="POST">
             <select name="workerId">
             <%- workers.map(w => `<option value="${w._id}">${w.name}</option>`) %> 
             </select>
