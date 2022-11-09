@@ -68,7 +68,7 @@ function create(req, res) {
 function show(req, res) {
     Event.find({}, function(err, events) {
         Event.findById(req.params.id).populate('workers').exec(function(err, event) {
-            Worker.find({ _id: { $nin: events.workers } })
+            Worker.find({ _id: { $nin: event.workers } })
                 .exec(function(err, workers) {
                     Venue.findById(event.venue, function(err, venue) {
                         res.render('events/show', { title: 'Details', events, event, venue, workers });

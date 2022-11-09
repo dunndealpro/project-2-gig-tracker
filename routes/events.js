@@ -7,6 +7,6 @@ router.get('/', eventsCtrl.index);
 router.get('/new', isLoggedIn, eventsCtrl.new);
 router.get('/:id', eventsCtrl.show);
 router.post('/', isLoggedIn, eventsCtrl.create);
-router.post('/events/:id/worker', eventsCtrl.addToEvent)
+// router.post('/events/:id/worker', eventsCtrl.addToEvent)
 
 module.exports = router

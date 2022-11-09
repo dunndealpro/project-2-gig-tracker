@@ -1,6 +1,7 @@
 const Worker = require('../models/worker')
 const Venue = require('../models/venue')
 const Event = require('../models/event')
+const worker = require('../models/worker')
 
 module.exports = {
     index,
@@ -8,9 +9,83 @@ module.exports = {
     show,
     create,
     addToEvent,
+    editWorkerDetails,
+    updateWorker,
 }
 
+
+function editWorkerDetails(req, res) {
+    console.log('edit starts')
+    console.log(req.params.id)
+    res.render('workers/edit', {
+        worker: Worker.findById(req.params.id),
+        workers: Worker.find({})
+    })
+}
+
+function updateWorker(req, res) {
+    console.log("update")
+    Todo.update(req.params.id, req.body);
+    res.redirect('/workers');
+}
+
+
+// function editWorkerDetails(req, res) {
+//     Worker.find({}, function(err, workers) {
+//         console.log('edit worker begin')
+//         Worker.findById(req.params.id, function(err, worker) {
+//             console.log(worker)
+//             if (err) console.log(err)
+//             res.render(`workers/edit`, { title: "Edit Worker", worker, workers })
+//         })
+//     })
+// }
+
+// function updateWorker(req, res) {
+//     Worker.findById(req.params.id, function(err, worker) {
+//         console.log("Update worker working?")
+//             // console.log(req.body)
+//             // req.body = req.body
+//         worker.updateOne({ _id: req.params.id }, {
+//             $set: {
+//                 'name': req.body.name,
+//                 'phoneNumber': req.body.phoneNumber,
+//                 'city': req.body.city,
+//                 'state': req.body.state,
+//                 'specialty': req.body.specialty,
+//                 'dayRate': req.body.dayRate
+//             }
+//         })
+//         worker.save(function(err) {
+//             console.log(worker._id)
+//             res.redirect(`/workers/${worker._id}`, worker)
+
+//         })
+
+//     })
+// }
+
+// function updateWorker(req, res) {
+//     console.log("Update worker working?")
+//     console.log(req.body)
+//         // req.body = req.body
+//     Worker.updateOne({ _id: req.params.id }, {
+//         $set: {
+//             'name': req.body.name,
+//             'phoneNumber': req.body.phoneNumber,
+//             'city': req.body.city,
+//             'state': req.body.state,
+//             'specialty': req.body.specialty,
+//             'dayRate': req.body.dayRate
+//         }
+//     })
+//     console.log('update work?')
+
+//     res.redirect(`/workers/${worker._id}`)
+// }
+
 function addToEvent(req, res) {
+
     console.log('worker push? 1')
     Event.findById(req.params.id, function(err, event) {
         console.log('worker push? 2')
@@ -25,6 +100,7 @@ function addToEvent(req, res) {
 
 
 function index(req, res) {
+
     Worker.find({}, function(err, workers) {
         console.log('worker index')
         res.render('workers/index', { title: 'Workers', workers })
@@ -32,11 +108,19 @@ function index(req, res) {
 }
 
 function newWorker(req, res) {
+
     Worker.find({}, function(err, workers) {
         console.log('new worker')
         res.render('workers/new', { title: 'Add Worker', workers });
     });
 };
+
+// function create(req, res) {
+//     // var worker = new Worker(req.body);
+//     worker.create(req.body)
+//     res.redirect(`/workers/${worker._id}`)
+// }
+
 
 function create(req, res) {
     var worker = new Worker(req.body);

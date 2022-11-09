@@ -25,18 +25,19 @@
     </section>
 
     <section id="worker-details-input">
-        <h2>Enter New worker</h2>
-        <form id="form-new-worker" action="/workers" method="POST">
+        <h2>Edit Worker</h2>
+        <form id="form-new-worker" action="/workers/<%= worker._id %>?_method=PUT" method="POST" autocomplete="off">
             <label>Name:</label>
-            <input type="text" name="name">
+            <input type="text" name="name" value="<%= worker.name %> ">
             <label>Phone Number:</label>
-            <input type="number" name="phoneNumber">
+            <input type="number" name="phoneNumber" value="<%= worker.phoneNumber %> ">
             <label>City:</label>
-            <input type="text" name="city">
+            <input type="text" name="city" value="<%= worker.city %> ">
             <label>State: </label>
-            <input type="text" name="state">
+            <input type="text" name="state" value="<%= worker.state %> ">
             <label>Specialty:</label>
             <select name="specialty">
+                <%=  %> 
                 <option value="none" selected disabled hidden>Select a Specialty</option>
                 <option value="audioEngineer">Audio Engineer</option>
                 <option value="audioTech">Audio Tech</option>
@@ -49,12 +50,12 @@
             </select>
 
             <label>Day Rate: </label>
-            <input type="number" name="dayRate">
+            <input type="number" name="dayRate" value="<%= worker.dayRate %>">
             <!-- <label>Venues Worked at: </label> -->
             <!-- insert forEach loop here to create check box options -->
 
 
-            <input id="add-worker-button" type="submit" value="Update Worker Info">
+            <input type="submit" value="Update Worker Info ">
         </form>
 
     </section>

@@ -5,9 +5,6 @@
 
     <a id="add-worker" href="/workers/new">Add worker</a>
 
-
-
-
     <table id="worker-list">
         <thead>
             <tr>
@@ -39,8 +36,6 @@
 
     <section id="worker-details">
         <h2>Worker Details</h2>
-
-
         <div>
             Name:
             <%= worker.name %>
@@ -62,9 +57,12 @@
             <%= worker.specialty %>
         </div>
         <div>
-            Day Rate:
             <%= worker.dayRate %>
         </div>
+        <!-- <form action="/workers/<%= worker._id %>/edit" method="GET">
+            <button type="submit">Edit Worker Details</button>
+        </form> -->
+        <a href="/workers/<%= worker._id %>/edit">Edit worker details</a>
 
 
 
