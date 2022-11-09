@@ -27,17 +27,26 @@ function deleteEvent(req, res) {
 
 function editEventDetails(req, res) {
     Event.find({}, function(err, events) {
-        console.log('edit worker begin')
-        Event.findById(req.params.id, function(err, event) {
-            console.log(event)
-            if (err) console.log(err)
-            res.render(`events/edit`, { title: "Edit Event", venue: Venue.find({}), event, events })
+        Venue.find({}, function(err, venues) {
+
+            console.log('edit worker begin')
+            Event.findById(req.params.id, function(err, event) {
+                et = event.date
+                let editDate = `${et.getFullYear()}-${(et.getMonth() + 2).toString().padStart(2, '0')}`;
+                editDate += `-${et.getDate().toString().padStart(2, '0')}T${et.toTimeString().slice(0, 5)}`;
+
+                console.log('Edit details, venue: ')
+                console.log(editDate)
+                if (err) console.log(err)
+                res.render(`events/edit`, { title: "Edit Event", venues, event, events, editDate })
+            })
         })
     })
 }
 
 function updateEvent(req, res) {
     Event.findById(req.params.id, function(err, event) {
+
         //     console.log("event")
         //     console.log(event)
         console.log("Update event working?")
@@ -111,11 +120,13 @@ function create(req, res) {
 }
 
 function show(req, res) {
+    console.log('show begin')
     Event.find({}, function(err, events) {
         Event.findById(req.params.id).populate('workers').exec(function(err, event) {
             Worker.find({ _id: { $nin: event.workers } })
                 .exec(function(err, workers) {
                     Venue.findById(event.venue, function(err, venue) {
+                        console.log('*****', venue)
                         res.render('events/show', { title: 'Details', events, event, venue, workers });
                     })
                 })
