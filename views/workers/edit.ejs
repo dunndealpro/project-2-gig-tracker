@@ -7,7 +7,7 @@
 
     <section id="worker-list">
         <h2>Current workers</h2>
-        <%workers.forEach(function(w){  %>
+        <% workers.forEach(function(w){  %>
             <div>
                 <%= w.name %>
             </div>
@@ -26,7 +26,7 @@
 
     <section id="worker-details-input">
         <h2>Edit Worker</h2>
-        <form id="form-new-worker" action="/workers/<%= worker._id %>?_method=PUT" method="POST" autocomplete="off">
+        <form id="form-new-worker" action="/workers/<%= worker.id %>?_method=PUT" method="POST" autocomplete="off">
             <label>Name:</label>
             <input type="text" name="name" value="<%= worker.name %> ">
             <label>Phone Number:</label>

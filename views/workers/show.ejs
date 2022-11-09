@@ -27,6 +27,13 @@
                         <%= w.state %>
                     </td>
                     <td><a href="/workers/<%= w._id %>">SELECT</a></td>
+                    <td>
+                        <div>
+                            <form action="/workers/<%= w._id %>?_method=DELETE" class="delete-form" method="POST">
+                                <button type="submit">X </button>
+                            </form>
+                        </div>
+                    </td>
                 </tr>
                 <%}); %>
 

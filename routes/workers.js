@@ -11,7 +11,8 @@ router.get('/workers/:id', isLoggedIn, workersCtrl.show);
 router.post('/workers/', isLoggedIn, workersCtrl.create);
 router.post('/events/:id/worker', isLoggedIn, workersCtrl.addToEvent);
 router.get('/workers/:id/edit', isLoggedIn, workersCtrl.editWorkerDetails);
-router.get('/workers/:id/edit', isLoggedIn, workersCtrl.editWorkerDetails);
+// router.get('/workers/:id/edit', isLoggedIn, workersCtrl.editWorkerDetails);
 router.put('/workers/:id', isLoggedIn, workersCtrl.updateWorker);
+router.delete('/workers/:id', isLoggedIn, workersCtrl.deleteWorker)
 
 module.exports = router
