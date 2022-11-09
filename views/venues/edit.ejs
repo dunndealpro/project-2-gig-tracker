@@ -1,11 +1,9 @@
 <%- include('../partials/header') %>
 
-    <h1>
+
+    <h1>Welcome to
         <%= title %>
     </h1>
-
-    <a id="add-venue" href="/venues/new">Add Venue</a>
-
 
     <table id="venue-list">
         <h2>Current Venues</h2>
@@ -42,14 +40,31 @@
 
                 <%}); %>
         </tbody>
-
-
-
-
     </table>
 
-    <section id="venue-details">
-        <h2>Venue Details</h2>
+    <section id="venue-details-input">
+        <h2>Edit Venue</h2>
+        <form id="form-new-venue" action="/venues/<%= venue.id %>?_method=PUT " method="POST">
+            <label>Name:</label>
+            <input type="text" name="name" value="<%= venue.name %> ">
+            <label>City:</label>
+            <input type="text" name="city" value="<%=venue.city %> ">
+            <label>State: </label>
+            <input type="text" name="state" value="<%=venue.state %> ">
+            <label>Power:</label>
+            <select name="power">
+                <option value="1 PHASE 100A">Single-Phase - 100A</option>
+                <option value="3 PHASE 100A">3-Phase - 100A</option>
+                <option value="3 PHASE 200A">3-Phase - 200A</option>
+                <option value="3 PHASE 400A">3-Phase - 400A</option>
+            </select>
+            <label>Union:</label>
+            <select name="union">
+                <option value="true">yes</option>
+                <option value="false">no</option>
+            </select>
+            <input type="submit" value="Update Venue Info">
+        </form>
 
     </section>
 

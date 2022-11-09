@@ -47,37 +47,13 @@ function updateWorker(req, res) {
             worker.state = req.body.state,
             worker.specialty = req.body.specialty,
             worker.dayRate = req.body.dayRate,
-
             worker.save(function(err) {
                 console.log('Huh', worker._id)
-                res.redirect('/workers/')
-
+                res.redirect(`/workers/${worker._id}`)
             })
-
-
-        // console.log(worker.name)
-        // console.log(req.body)
-        // req.body = req.body
-        // worker.updateOne(req.params.id, {
-        //     $set: {
-        //         name: req.body.name,
-        //         phoneNumber: req.body.phoneNumber,
-        //         city: req.body.city,
-        //         state: req.body.state,
-        //         specialty: req.body.specialty,
-        //         dayRate: req.body.dayRate
-        //     },
-
-        // function(err) {
     })
 
 }
-
-
-
-// })
-
-
 
 function addToEvent(req, res) {
 
@@ -91,8 +67,6 @@ function addToEvent(req, res) {
         })
     })
 }
-
-
 
 function index(req, res) {
 

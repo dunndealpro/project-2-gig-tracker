@@ -7,7 +7,10 @@ module.exports = {
     index,
     new: newVenue,
     create,
-    show
+    show,
+    deleteVenue,
+    editVenueDetails,
+    updateVenue
 }
 
 function index(req, res) {
@@ -38,10 +41,51 @@ function show(req, res) {
     Venue.find({}, function(err, venues) {
         Venue.findById(req.params.id, function(err, venue) {
 
-            console.log(venue)
+            // console.log(venue)
             console.log("Yass!?")
-            console.log(venues)
+                // console.log(venues)
             res.render('venues/show', { title: 'Details', venues, venue });
         });
     });
+}
+
+function deleteVenue(req, res) {
+    Venue.findByIdAndDelete(req.params.id, function(err, docs) {
+        if (err) {
+            console.log(err)
+        } else {
+            console.log("Deleted : ", docs);
+        }
+        res.redirect('/venues/')
+    })
+}
+
+function editVenueDetails(req, res) {
+    Venue.find({}, function(err, venues) {
+        console.log('edit venue begin')
+        Venue.findById(req.params.id, function(err, venue) {
+            console.log(venue)
+            if (err) console.log(err)
+            res.render(`venues/edit`, { title: "Edit Venue", venue, venues })
+        })
+    })
+}
+
+function updateVenue(req, res) {
+    Venue.findById(req.params.id, function(err, venue) {
+        //     console.log("venue")
+        //     console.log(venue)
+        console.log("Update venue working?")
+        venue.name = req.body.name,
+
+            venue.city = req.body.city,
+            venue.state = req.body.state,
+            venue.specialty = req.body.specialty,
+            venue.dayRate = req.body.dayRate,
+            venue.save(function(err) {
+                console.log('Huh', venue._id)
+                res.redirect(`/venues/${venue._id}`)
+            })
+    })
+
 }

@@ -7,7 +7,52 @@ module.exports = {
     new: newEvent,
     create,
     show,
-    addToEvent
+    addToEvent,
+    editEventDetails,
+    updateEvent,
+    deleteEvent,
+}
+
+
+function deleteEvent(req, res) {
+    Event.findByIdAndDelete(req.params.id, function(err, docs) {
+        if (err) {
+            console.log(err)
+        } else {
+            console.log("Deleted : ", docs);
+        }
+        res.redirect('/events/')
+    })
+}
+
+function editEventDetails(req, res) {
+    Event.find({}, function(err, events) {
+        console.log('edit worker begin')
+        Event.findById(req.params.id, function(err, event) {
+            console.log(event)
+            if (err) console.log(err)
+            res.render(`events/edit`, { title: "Edit Event", venue: Venue.find({}), event, events })
+        })
+    })
+}
+
+function updateEvent(req, res) {
+    Event.findById(req.params.id, function(err, event) {
+        //     console.log("event")
+        //     console.log(event)
+        console.log("Update event working?")
+        event.name = req.body.name,
+            event.client = req.body.client,
+            event.date = req.body.date,
+            event.venue = req.body.venue,
+            event.duration = req.body.duration,
+            event.workers = req.body.workers,
+            event.save(function(err) {
+                console.log('Huh', event._id)
+                res.redirect(`/events/${event._id}`)
+            })
+    })
+
 }
 
 function addToEvent(req, res) {

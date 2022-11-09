@@ -6,24 +6,40 @@
     <a id="add-event" href="/events/new">Add event</a>
 
 
-    <section id="event-list">
-        <h2>Current events</h2>
-        <%events.forEach(function(v){  %>
-            <div>
-                <%= v.name %>
-            </div>
-            <div>
-                <%= v.city %>
-            </div>
-            <div>
-                <%= v.state %>
-            </div>
-            <div>
-                <a href="/events/<%= v._id %>">SELECT</a>
-            </div>
+    <table id="event-list">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Date</th>
 
-            <%}); %>
-    </section>
+
+
+            </tr>
+        </thead>
+        <tbody>
+            <%events.forEach(function(e){  %>
+                <tr>
+                    <td>
+                        <%= e.name %>
+                    </td>
+                    <td>
+                        <%= e.date.toLocaleDateString() %>
+                    </td>
+
+                    <td><a href="/events/<%= e._id %>">SELECT</a></td>
+                    <td>
+                        <div>
+                            <form action="/events/<%= e._id %>?_method=DELETE" class="delete-form" method="POST">
+                                <button type="submit">X </button>
+                            </form>
+                        </div>
+                    </td>
+                </tr>
+                <%}); %>
+
+        </tbody>
+
+    </table>
 
     <section id="event-details">
         <h2>Event Details</h2>
@@ -74,6 +90,7 @@
             </select>
             <button type="submit">Add Worker to Event</button>
         </form>
+        <a href="/events/<%= event._id %>/edit">Edit event details</a>
     </section>
 
 

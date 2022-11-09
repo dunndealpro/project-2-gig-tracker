@@ -6,24 +6,43 @@
     <a id="add-venue" href="/venues/new">Add Venue</a>
 
 
-    <section id="venue-list">
+    <table id="venue-list">
         <h2>Current Venues</h2>
-        <%venues.forEach(function(v){  %>
-            <div>
-                <%= v.name %>
-            </div>
-            <div>
-                <%= v.city %>
-            </div>
-            <div>
-                <%= v.state %>
-            </div>
-            <div>
-                <a href="/venues/<%= v._id %>">SELECT</a>
-            </div>
+        <thead>
+            <tr>
+                <th>Venue</th>
+                <th>City</th>
+                <th>State</th>
+            </tr>
+        </thead>
+        <tbody>
+            <%venues.forEach(function(v){  %>
+                <tr>
+                    <td>
+                        <%= v.name %>
+                    </td>
+                    <td>
+                        <%= v.city %>
+                    </td>
+                    <td>
+                        <%= v.state %>
+                    </td>
+                    <td>
+                        <a href="/venues/<%= v._id %>">SELECT</a>
+                    </td>
+                    <td>
+                        <div>
+                            <form action="/venues/<%= v._id %>?_method=DELETE" class="delete-form" method="POST">
+                                <button type="submit">X </button>
+                            </form>
+                        </div>
+                    </td>
+                </tr>
 
-            <%}); %>
-    </section>
+                <%}); %>
+        </tbody>
+
+    </table>
 
     <section id="venue-details">
         <h2>Venue Details</h2>
@@ -49,6 +68,8 @@
             Union:
             <%= venue.union %>
         </div>
+
+        <a href="/venues/<%= venue._id %>/edit">Edit venue details</a>
 
 
 

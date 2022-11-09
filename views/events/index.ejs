@@ -6,25 +6,44 @@
 
     <a id="add-event" href="/events/new">Add Event</a>
 
+    <table id="event-list">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Date</th>
 
-    <section id="event-list">
-        <h2>Upcoming Events</h2>
-        <%events.forEach(function(e){  %>
-            <div>
-                <%= e.name %>
-            </div>
-            <div>
-                <%= e.city %>
-            </div>
-            <div>
-                <%= e.state %>
-            </div>
-            <div>
-                <a href="/events/<%= e._id %>">SELECT</a>
-            </div>
 
-            <%}); %>
-    </section>
+
+            </tr>
+        </thead>
+        <tbody>
+            <%events.forEach(function(e){  %>
+                <tr>
+                    <td>
+                        <%= e.name %>
+                    </td>
+                    <td>
+                        <%= e.date.toLocaleDateString() %>
+                    </td>
+
+                    <td><a href="/events/<%= e._id %>">SELECT</a></td>
+                    <td>
+                        <div>
+                            <form action="/events/<%= e._id %>?_method=DELETE" class="delete-form" method="POST">
+                                <button type="submit">X </button>
+                            </form>
+                        </div>
+                    </td>
+                </tr>
+                <%}); %>
+
+        </tbody>
+
+    </table>
+
+
+
+
 
     <section id="event-details">
         <h2>Event Details</h2>

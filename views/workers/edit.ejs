@@ -5,24 +5,41 @@
         <%= title %>
     </h1>
 
-    <section id="worker-list">
-        <h2>Current workers</h2>
-        <% workers.forEach(function(w){  %>
-            <div>
-                <%= w.name %>
-            </div>
-            <div>
-                <%= w.city %>
-            </div>
-            <div>
-                <%= w.state %>
-            </div>
-            <div>
-                <a href="/workers/<%= w._id %>">SELECT</a>
-            </div>
-
-            <%}); %>
-    </section>
+    <table id="worker-list">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>City</th>
+                <th>State</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <%workers.forEach(function(w){  %>
+                <tr>
+                    <td>
+                        <%= w.name %>
+                    </td>
+                    <td>
+                        <%= w.city %>
+                    </td>
+                    <td>
+                        <%= w.state %>
+                    </td>
+                    <td>
+                        <a href="/workers/<%= w._id %>">SELECT</a>
+                    </td>
+                    <td>
+                        <div>
+                            <form action="/workers/<%= w._id %>?_method=DELETE" class="delete-form" method="POST">
+                                <button type="submit">X </button>
+                            </form>
+                        </div>
+                    </td>
+                </tr>
+                <%}); %>
+        </tbody>
+    </table>
 
     <section id="worker-details-input">
         <h2>Edit Worker</h2>

@@ -42,14 +42,14 @@
     </section>
 
     <section id="event-details-input">
-        <h2>Enter New event</h2>
+        <h2>Edit Event</h2>
         <form id="form-new-event" action="/events" method="POST">
             <label>Event Name:</label>
-            <input type="text" name="name">
+            <input type="text" name="name" value="<%= event.name %>>
             <label>Client/Promoter:</label>
-            <input type="text" name="client">
+            <input type=" text " name="client " value="<%=event.client %>>
             <label>Event Date/Time:</label>
-            <input type="datetime-local" name="date" value="<%=defaultDate%>">
+            <input type="datetime-local " name="date " value="<%=event.date%>">
             <label>Venues:</label>
             <select name="venue">
             <%  venues.forEach(function(v){ %>
@@ -71,7 +71,7 @@
                 <% }) %> 
                  </select> -->
 
-            <input id="add-event-button" type="submit" value="Add event">
+            <input type="submit" value="Edit event Info">
         </form>
 
     </section>
