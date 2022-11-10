@@ -29,9 +29,10 @@ function editEventDetails(req, res) {
     Event.find({}, function(err, events) {
         Venue.find({}, function(err, venues) {
 
-            console.log('edit worker begin')
+            console.log('edit EVENT begin')
             Event.findById(req.params.id, function(err, event) {
                 et = event.date
+                console.log(event.date)
                 let editDate = `${et.getFullYear()}-${(et.getMonth() + 2).toString().padStart(2, '0')}`;
                 editDate += `-${et.getDate().toString().padStart(2, '0')}T${et.toTimeString().slice(0, 5)}`;
 
@@ -47,9 +48,10 @@ function editEventDetails(req, res) {
 function updateEvent(req, res) {
     Event.findById(req.params.id, function(err, event) {
 
-        //     console.log("event")
-        //     console.log(event)
+        console.log("event")
+        console.log(req.body.name)
         console.log("Update event working?")
+
         event.name = req.body.name,
             event.client = req.body.client,
             event.date = req.body.date,
@@ -57,6 +59,7 @@ function updateEvent(req, res) {
             event.duration = req.body.duration,
             event.workers = req.body.workers,
             event.save(function(err) {
+                console.log(event)
                 console.log('Huh', event._id)
                 res.redirect(`/events/${event._id}`)
             })
@@ -100,6 +103,8 @@ function newEvent(req, res) {
 function create(req, res) {
 
     var event = new Event(req.body);
+    console.log("new event")
+    console.log(event)
 
     Venue.findById(req.body.venue, function(err, venueId) {
         // console.log('Venue dot find')
@@ -123,10 +128,11 @@ function show(req, res) {
     console.log('show begin')
     Event.find({}, function(err, events) {
         Event.findById(req.params.id).populate('workers').exec(function(err, event) {
+            console.log(event)
             Worker.find({ _id: { $nin: event.workers } })
                 .exec(function(err, workers) {
                     Venue.findById(event.venue, function(err, venue) {
-                        console.log('*****', venue)
+                        console.log('*****', event.venue)
                         res.render('events/show', { title: 'Details', events, event, venue, workers });
                     })
                 })

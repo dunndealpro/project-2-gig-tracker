@@ -80,8 +80,8 @@ function updateVenue(req, res) {
 
             venue.city = req.body.city,
             venue.state = req.body.state,
-            venue.specialty = req.body.specialty,
-            venue.dayRate = req.body.dayRate,
+            venue.power = req.body.power,
+            venue.union = req.body.union,
             venue.save(function(err) {
                 console.log('Huh', venue._id)
                 res.redirect(`/venues/${venue._id}`)

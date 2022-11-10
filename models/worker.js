@@ -7,7 +7,7 @@ const workerSchema = new Schema({
         type: String,
         required: true
     },
-    phoneNumber: Number,
+    phoneNumber: String,
     city: String,
     state: String,
     specialty: String,

@@ -28,8 +28,9 @@
         <form id="form-new-worker" action="/workers" method="POST">
             <label>Name:</label>
             <input type="text" name="name">
-            <label>Phone Number:</label>
-            <input type="number" name="phoneNumber">
+            <label>Phone Number:(XXX-XXX-XXXX)</label>
+            <input type="tel" id="phone" name="phoneNumber" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required>
+
             <label>City:</label>
             <input type="text" name="city">
             <label>State: </label>

@@ -43,16 +43,17 @@
 
     <section id="event-details-input">
         <h2>Edit Event</h2>
-        <form id="form-new-event" action="/events/<%= event.id %>?_method=PUT" method="POST" autocomplete="off">
+        <form id="form-new-event" action="/events/<%= event.id %>?_method=PUT" method="POST">
             <label>Event Name:</label>
             <input type="text" name="name" value="<%= event.name %>">
             <label>Client/Promoter:</label>
-            <input type="text " name="client " value="<%=event.client %>" ">
+            <input type="text" name="client" value="<%=event.client %>">
+
             <label>Event Date/Time:</label>
-           
-            <input type="datetime-local " name="date " value="<%=editDate %> ">
+
+            <input type="datetime-local" name="date" value="<%= editDate %>">
             <label>Venues:</label>
-            <select name="venue ">
+            <select name="venue">
             <%  venues.forEach(function(v){ %>
                 <option value="<%=v._id%>">
             <%=v.name%>
@@ -68,7 +69,7 @@
             <label>Duration:</label>
             <input type="number" name="duration">
 
-            </select> -->
+            </select>
 
             <input type="submit" value="Edit event Info">
         </form>
