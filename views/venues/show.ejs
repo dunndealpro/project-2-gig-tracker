@@ -68,6 +68,15 @@
             Union:
             <%= venue.union %>
         </div>
+        <div>
+            Events:
+            <ul>
+                <%- venue.events.map(v => 
+                  `<li>${v.name} </li>`
+                ).join('') %>
+            </ul>
+        </div>
+
 
         <a href="/venues/<%= venue._id %>/edit">Edit venue details</a>
 

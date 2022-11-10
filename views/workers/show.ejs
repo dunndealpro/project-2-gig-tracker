@@ -64,8 +64,22 @@
             <%= worker.specialty %>
         </div>
         <div>
+            Day Rate:
             <%= worker.dayRate %>
         </div>
+
+
+        <div>
+            Events Booked:
+            <ul>
+                <%- worker.eventsBooked.map(w => 
+                  `<li>${worker.eventsBooked.eventId}</li>`
+                ).join('') %>
+            </ul>
+        </div>
+
+
+
         <!-- <form action="/workers/<%= worker._id %>/edit" method="GET">
             <button type="submit">Edit Worker Details</button>
         </form> -->

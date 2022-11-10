@@ -68,6 +68,9 @@
             <input type="text" name="city">
             <label>State: </label>
             <input type="text" name="state"> -->
+
+
+
             <label>Duration:</label>
             <input type="number" name="duration" value="<%= event.duration %>">
 
@@ -75,6 +78,13 @@
 
             <input type="submit" value="Edit event Info">
         </form>
+        <label>Workers: </label>
+        <ul>
+            <%- workers.map(w => 
+                  `<li>${w.name} <small>${w.specialty}</small></li>`
+                ).join('') %>
+        </ul>
+
 
     </section>
 

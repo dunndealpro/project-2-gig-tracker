@@ -12,7 +12,8 @@ const workerSchema = new Schema({
     state: String,
     specialty: String,
     dayRate: Number,
-    // venuesWorked: [{ type: Schema.Types.ObjectId, ref: 'Venue' }]
+    eventsBooked: [{ type: Schema.Types.ObjectId, ref: 'EventId' }]
+        // venuesWorked: [{ type: Schema.Types.ObjectId, ref: 'Venue' }]
 }, {
     timestamps: true
 })

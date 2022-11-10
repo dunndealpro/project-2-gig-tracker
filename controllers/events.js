@@ -1,16 +1,18 @@
 const Worker = require('../models/worker');
 const Venue = require('../models/venue');
-const Event = require('../models/event')
+const Event = require('../models/event');
+const { events } = require('../models/user');
 
 module.exports = {
     index,
     new: newEvent,
     create,
     show,
-    addToEvent,
+    // addToEvent,
     editEventDetails,
     updateEvent,
     deleteEvent,
+    // removeFromEvent,
 }
 
 
@@ -32,6 +34,8 @@ function editEventDetails(req, res) {
             console.log('edit EVENT begin')
             Event.findById(req.params.id, function(err, event) {
                 Venue.findById(event.venue, function(err, venue) {
+                    let workers = event.workers
+                    console.log(workers)
                     et = event.date
                     console.log(event.date)
                     let editDate = `${et.getFullYear()}-${(et.getMonth() + 1).toString().padStart(2, '0')}`;
@@ -40,8 +44,7 @@ function editEventDetails(req, res) {
                     console.log('Edit details, venue: ')
                     console.log(event.venue)
                     if (err) console.log(err)
-                    res.render(`events/edit`, { title: "Edit Event", venues, venue, event, events, editDate })
-
+                    res.render(`events/edit`, { title: "Edit Event", venues, venue, event, events, editDate, workers })
                 })
             })
         })
@@ -79,8 +82,23 @@ function addToEvent(req, res) {
             res.redirect(`/events/${event._id}`);
         })
     })
-
 }
+
+// function removeFromEvent(req, res) {
+//     console.log('remove start')
+//     Event.findById(req.params.id, function(err, event) {
+//         Worker.findById(req.body.workerId, function(err, worker) {
+//             idx = events.workers.findIndex(worker)
+//             console.log('worker slice?')
+//             event.workers.slice(idx, 1)
+//             event.save(function(err) {
+//                 res.redirect(`/events/${event._id}`);
+//             })
+
+//         })
+//     })
+
+// }
 
 function index(req, res) {
     Event.find({}, function(err, events) {
@@ -109,7 +127,7 @@ function create(req, res) {
     console.log("new event")
     console.log(event)
 
-    Venue.findById(req.body.venue, function(err, venueId) {
+    Venue.findById(req.body.venue, function(err, venue) {
         // console.log('Venue dot find')
         // console.log(venueId)
         // event.venue = req.body.venue
@@ -118,6 +136,11 @@ function create(req, res) {
         // console.log(event.name)
         // console.log("Event Venue: ")
         // console.log(event.venue)
+        venue.events.push(event)
+        console.log("Add event to venue begin")
+        console.log(event)
+        console.log(venue)
+        venue.save()
         event.save(function(err) {
             if (err) return res.redirect('/events/new');
 

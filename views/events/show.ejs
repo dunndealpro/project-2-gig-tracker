@@ -12,8 +12,6 @@
                 <th>Name</th>
                 <th>Date</th>
 
-
-
             </tr>
         </thead>
         <tbody>
@@ -77,11 +75,11 @@
             Workers:
             <ul>
                 <%- event.workers.map(w => 
-                  `<li>${w.name} <small>${w.specialty}</small></li>`
-                ).join('') %>
+                  `<li>${w.name} <small>${w.specialty} <a href="/workers/${w._id}">SELECT</a></small><form id="remove-worker-to-event" action="/events/${event._id}/remove/${w._id} "method="POST"><button type="submit">Remove Worker from Event</button></form></li>` ).join('') %>
             </ul>
         </div>
         <br>
+
 
         <div>Add Workers to Event</div>
         <form id="add-worker-to-event" action="/events/<%= event._id %>/worker" method="POST">

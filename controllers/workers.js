@@ -11,7 +11,35 @@ module.exports = {
     addToEvent,
     editWorkerDetails,
     updateWorker,
-    deleteWorker
+    deleteWorker,
+    removeFromEvent
+}
+
+function removeFromEvent(req, res) {
+    console.log('remove start')
+    console.log(req.params.id1)
+    Event.findById(req.params.id, function(err, event) {
+        console.log("Event: ")
+        console.log(event)
+        console.log(event.workers)
+        let workers = event.workers
+        Worker.findById(req.params.id1, function(err, worker) {
+            console.log("Worker: ")
+            console.log(worker)
+            console.log(worker._id)
+                // console.log(event.workers[0])
+            idx = workers.indexOf(worker._id)
+            console.log('worker slice?')
+            console.log(idx)
+            workers.splice(idx, 1)
+            console.log(event.workers)
+            event.save(function(err) {
+                res.redirect(`/events/${event._id}`);
+            })
+
+        })
+    })
+
 }
 
 function deleteWorker(req, res) {
@@ -59,11 +87,19 @@ function addToEvent(req, res) {
 
     console.log('worker push? 1')
     Event.findById(req.params.id, function(err, event) {
-        console.log('worker push? 2')
-        event.workers.push(req.body.workerId)
-        event.save(function(err) {
-            if (err) console.log(err)
-            res.redirect(`/events/${event._id}`);
+        Worker.findById(req.body.workerId, function(err, worker) {
+
+            console.log('worker push? 2')
+            event.workers.push(req.body.workerId)
+
+            console.log('gig push??')
+            worker.eventsBooked.push(event)
+            worker.save()
+            console.log(worker)
+            event.save(function(err) {
+                if (err) console.log(err)
+                res.redirect(`/events/${event._id}`);
+            })
         })
     })
 }

@@ -36,4 +36,4 @@ https://trello.com/invite/b/YOBnTbBd/ATTI8ee0c9a0f0b1b3c5f487251a005989b515614C7
    - An event/gig has many workers and a worker can work many gigs.(many:many)
    - An event/gig has one venue. (1:1)
    - A venue has many gigs(Many:1)
-   -(stretch)A venue has many food places nearby and a food place has many venues nearby.(many:many)
+   - (stretch)A venue has many food places nearby and a food place has many venues nearby.(many:many)

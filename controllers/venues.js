@@ -43,7 +43,7 @@ function show(req, res) {
 
             // console.log(venue)
             console.log("Yass!?")
-                // console.log(venues)
+            console.log(venue)
             res.render('venues/show', { title: 'Details', venues, venue });
         });
     });
