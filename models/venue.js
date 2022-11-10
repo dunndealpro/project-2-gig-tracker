@@ -17,7 +17,7 @@ const venueSchema = new Schema({
     },
     power: String,
     union: String,
-    events: [{ type: Schema.Types.ObjectId, ref: 'EventId' }]
+    events: [{ type: Schema.Types.ObjectId, ref: 'Event' }]
 })
 
 module.exports = mongoose.model('Venue', venueSchema);

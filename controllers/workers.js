@@ -137,16 +137,32 @@ function create(req, res) {
 
 function show(req, res) {
     Worker.find({}, function(err, workers) {
-        Worker.findById(req.params.id, function(err, worker) {
-
-            // console.log(venue)
-            // console.log("Yass!?")
-            // console.log(venues)
+        console.log("Show Worker Start")
+        console.log(req.params.id)
+        Worker.findById(req.params.id).populate('eventsBooked').exec(function(err, worker) {
+            console.log(err)
+            console.log("is this working?")
+            console.log(worker)
             res.render('workers/show', { title: 'Details', workers, worker });
         });
     });
 }
-// function editWorkerDetails(req, res) {
+
+
+// function show(req, res) {
+//     Worker.find({}, function(err, workers) {
+//         Worker.findById(req.params.id, function(err, worker) {
+
+//             // console.log(venue)
+//             console.log("Workers Show working")
+//                 // console.log(venues)
+//             events = worker.eventsBooked
+
+//             res.render('workers/show', { title: 'Details', workers, worker, events });
+//         });
+//     });
+// }
+// // function editWorkerDetails(req, res) {
 //     console.log('edit starts')
 //     console.log(req.params.id)
 //     res.render('workers/edit', {

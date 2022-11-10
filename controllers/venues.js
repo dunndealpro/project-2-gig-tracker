@@ -39,7 +39,7 @@ function create(req, res) {
 
 function show(req, res) {
     Venue.find({}, function(err, venues) {
-        Venue.findById(req.params.id, function(err, venue) {
+        Venue.findById(req.params.id).populate('events').exec(function(err, venue) {
 
             // console.log(venue)
             console.log("Yass!?")

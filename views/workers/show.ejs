@@ -73,21 +73,12 @@
             Events Booked:
             <ul>
                 <%- worker.eventsBooked.map(w => 
-                  `<li>${worker.eventsBooked.eventId}</li>`
+                  `<li>${w.name}</li>`
                 ).join('') %>
             </ul>
         </div>
 
-
-
-        <!-- <form action="/workers/<%= worker._id %>/edit" method="GET">
-            <button type="submit">Edit Worker Details</button>
-        </form> -->
         <a href="/workers/<%= worker._id %>/edit">Edit worker details</a>
-
-
-
-
 
     </section>
 
