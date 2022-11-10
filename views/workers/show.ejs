@@ -73,7 +73,7 @@
             Events Booked:
             <ul>
                 <%- worker.eventsBooked.map(w => 
-                  `<li>${w.name}</li>`
+                  `<li>${w.name} <a href="/events/${w._id}">SELECT</a></li>`
                 ).join('') %>
             </ul>
         </div>

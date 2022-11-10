@@ -71,8 +71,8 @@
         <div>
             Events:
             <ul>
-                <%- venue.events.map(v => 
-                  `<li>${v.name} </li>`
+                <%- venue.events.map(e => 
+                  `<li>${e.name} <a href="/events/${e._id}">SELECT</a> </li>`
                 ).join('') %>
             </ul>
         </div>

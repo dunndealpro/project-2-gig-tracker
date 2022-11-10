@@ -32,6 +32,7 @@ function removeFromEvent(req, res) {
             console.log('worker slice?')
             console.log(idx)
             workers.splice(idx, 1)
+            worker.save()
             console.log(event.workers)
             event.save(function(err) {
                 res.redirect(`/events/${event._id}`);
