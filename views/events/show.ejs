@@ -91,6 +91,36 @@
         <a href="/events/<%= event._id %>/edit">Edit event details</a>
     </section>
 
+    <section id="selected-details">
+        <h2>Venue Details</h2>
+
+
+        <div>
+            Venue Name:
+            <%= venue.name %>
+        </div>
+        <div>
+            City:
+            <%= venue.city %>
+        </div>
+        <div>
+            State:
+            <%= venue.state %>
+        </div>
+        <div>
+            Power Service:
+            <%= venue.power %>
+        </div>
+        <div>
+            Union:
+            <%= venue.union %>
+        </div>
+
+
+
+
+    </section>
+
 
 
     <%- include('../partials/footer') %>
