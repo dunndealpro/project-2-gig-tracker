@@ -31,15 +31,18 @@ function editEventDetails(req, res) {
 
             console.log('edit EVENT begin')
             Event.findById(req.params.id, function(err, event) {
-                et = event.date
-                console.log(event.date)
-                let editDate = `${et.getFullYear()}-${(et.getMonth() + 2).toString().padStart(2, '0')}`;
-                editDate += `-${et.getDate().toString().padStart(2, '0')}T${et.toTimeString().slice(0, 5)}`;
+                Venue.findById(event.venue, function(err, venue) {
+                    et = event.date
+                    console.log(event.date)
+                    let editDate = `${et.getFullYear()}-${(et.getMonth() + 1).toString().padStart(2, '0')}`;
+                    editDate += `-${et.getDate().toString().padStart(2, '0')}T${et.toTimeString().slice(0, 5)}`;
 
-                console.log('Edit details, venue: ')
-                console.log(editDate)
-                if (err) console.log(err)
-                res.render(`events/edit`, { title: "Edit Event", venues, event, events, editDate })
+                    console.log('Edit details, venue: ')
+                    console.log(event.venue)
+                    if (err) console.log(err)
+                    res.render(`events/edit`, { title: "Edit Event", venues, venue, event, events, editDate })
+
+                })
             })
         })
     })
@@ -57,7 +60,7 @@ function updateEvent(req, res) {
             event.date = req.body.date,
             event.venue = req.body.venue,
             event.duration = req.body.duration,
-            event.workers = req.body.workers,
+
             event.save(function(err) {
                 console.log(event)
                 console.log('Huh', event._id)

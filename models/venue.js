@@ -16,7 +16,7 @@ const venueSchema = new Schema({
         required: true
     },
     power: String,
-    union: Boolean,
+    union: String,
 })
 
 module.exports = mongoose.model('Venue', venueSchema);
