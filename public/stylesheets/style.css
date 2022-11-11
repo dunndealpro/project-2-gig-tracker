@@ -8,36 +8,69 @@ body {
     padding: 30px;
     font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
     display: grid;
-    grid-template-rows: 50px 1fr;
+    grid-template-rows: 70px 1fr;
     grid-template-areas: "nav" "main";
+    background-color: rgb(253, 190, 64);
 }
 
 body>nav {
     grid-area: nav;
-    background-color: grey;
+    background-color: rgb(90, 101, 113);
     display: flex;
     justify-content: flex-end;
     align-items: center;
-    padding: 0 20px 0 30px;
+    /* padding: 0 20px 0 30px; */
 }
 
 nav>img {
-    width: 34px;
+    width: 50px;
     object-fit: contain;
     margin-right: auto;
 }
 
 nav>a {
     margin: 10px;
+    font-size: medium;
     text-decoration: none;
     padding: 10px;
     border-radius: 5px;
+    color: cornsilk;
 }
 
 nav>a img {
-    width: 34px;
+    width: 50px;
     object-fit: contain;
     margin-right: auto;
+}
+
+.landing-choice {
+    text-decoration: none;
+    color: cornsilk;
+    font-size: 25px;
+    border-radius: 25px;
+    display: flex;
+    flex-direction: column;
+    background-color: rgb(34, 118, 187);
+    margin: 30px;
+    grid-column-start: 2;
+    text-align: center;
+    /* justify-items: center; */
+    justify-content: center;
+    align-items: center;
+    width: 60vw;
+    height: 100px;
+    padding: auto;
+}
+
+
+/* .landing-choice>a {
+    margin: auto;
+    color: cornsilk;
+} */
+
+.login {
+    margin-left: auto;
+    margin-right: 30px;
 }
 
 
@@ -56,6 +89,7 @@ h1 {
     grid-column-start: 0;
 }
 .landing {
+    margin: 30px 0 30px 0;
     grid-column: span 3;
     /* justify-content: center; */
     /* align-items: center; */
@@ -64,11 +98,12 @@ h1 {
     text-align: center;
 }
 .landing-sub {
+    margin-top: -20px;
     grid-column: span 3;
     /* justify-content: center; */
     /* align-items: center; */
     
-    font-size: 20px;
+    font-size: 15px;
     text-align: center;
 }
 #venue-list {

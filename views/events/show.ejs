@@ -57,16 +57,9 @@
 
         <div>
             Venue:
-            <%= venue.name %><a href="/venues/<%= venue._id %>">SELECT</a>
+            <%= venue.name %>
         </div>
-        <div>
-            City:
-            <%= venue.city %>
-        </div>
-        <div>
-            State:
-            <%= venue.state %>
-        </div>
+
         <div>
             Duration:
             <%= event.duration %>
@@ -75,7 +68,7 @@
             Workers:
             <ul>
                 <%- event.workers.map(w => 
-                  `<li>${w.name} <small>${w.specialty} <a href="/workers/${w._id}">SELECT</a></small><form id="remove-worker-to-event" action="/events/${event._id}/remove/${w._id} "method="POST"><button type="submit">Remove Worker from Event</button></form></li>` ).join('') %>
+                  `<li>${w.name} <small>${w.specialty} <a href="/events/${event._id}/${w._id}">SELECT</a></small><form id="remove-worker-to-event" action="/events/${event._id}/remove/${w._id} "method="POST"><button type="submit">Remove Worker from Event</button></form></li>` ).join('') %>
             </ul>
         </div>
         <br>

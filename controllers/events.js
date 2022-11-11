@@ -12,8 +12,11 @@ module.exports = {
     editEventDetails,
     updateEvent,
     deleteEvent,
+    detailed,
     // removeFromEvent,
 }
+
+
 
 
 function deleteEvent(req, res) {
@@ -164,6 +167,23 @@ function show(req, res) {
                 })
         });
     });
+}
+
+function detailed(req, res) {
+    console.log('detailed event begin')
+    Event.find({}, function(err, events) {
+        Event.findById(req.params.id).populate('workers').exec(function(err, event) {
+            console.log(event)
+            Worker.find({ _id: { $nin: event.workers } })
+                .exec(function(err, workers) {
+                    Venue.findById(event.venue, function(err, venue) {
+                        console.log('*****', event.venue)
+                        res.render('events/show', { title: 'Details', events, event, venue, workers });
+                    })
+                })
+        });
+    });
+
 }
 
 // function show(req, res) {

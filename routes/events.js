@@ -7,6 +7,7 @@ router.get('/events', eventsCtrl.index);
 router.get('/events/new', isLoggedIn, eventsCtrl.new);
 router.get('/events/:id', eventsCtrl.show);
 router.post('/events/', isLoggedIn, eventsCtrl.create);
+router.get('events/:id/:id2', isLoggedIn, eventsCtrl.detailed)
 
 // router.post('/events/:id/worker', isLoggedIn, workersCtrl.addToEvent);
 router.get('/events/:id/edit', isLoggedIn, eventsCtrl.editEventDetails);
