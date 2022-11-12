@@ -4,16 +4,14 @@
         <%= title %>
     </h1>
 
-    <a id="add-event" href="/events/new">Add Event</a>
-
+    
     <table id="event-list">
         <thead>
             <tr>
                 <th>Name</th>
                 <th>Date</th>
-
-
-
+                <th></th>
+                <th></th>
             </tr>
         </thead>
         <tbody>
@@ -23,25 +21,26 @@
                         <%= e.name %>
                     </td>
                     <td>
-                        <%= e.date %>
+                        <%= e.date.toDateString() %>
                     </td>
-
+                    
                     <td><a href="/events/<%= e._id %>">SELECT</a></td>
                     <td>
                         <div>
                             <form action="/events/<%= e._id %>?_method=DELETE" class="delete-form" method="POST">
-                                <button type="submit">X </button>
+                                <button type="submit">Delete </button>
                             </form>
                         </div>
                     </td>
                 </tr>
-                <%}); %>
-
+            <%}); %>
+                
         </tbody>
-
+            
     </table>
-
-
+        
+       
+    
 
 
 
@@ -49,5 +48,6 @@
         <h2>Event Details</h2>
 
     </section>
-
+    
+    <a id="add-event" href="/events/new">Add Event</a>
     <%- include('../partials/footer') %>
