@@ -4,40 +4,42 @@
         <%= title %>
     </h1>
 
-    
-    <table id="event-list">
-        <thead>
-            <tr>
-                <th>Name</th>
-                <th>Date</th>
-                <th></th>
-                <th></th>
-            </tr>
-        </thead>
-        <tbody>
-            <%events.forEach(function(e){  %>
+    <section id="event-list">
+
+        <table >
+            <thead>
                 <tr>
-                    <td>
-                        <%= e.name %>
-                    </td>
-                    <td>
-                        <%= e.date.toDateString() %>
-                    </td>
-                    
-                    <td><a href="/events/<%= e._id %>">SELECT</a></td>
-                    <td>
-                        <div>
-                            <form action="/events/<%= e._id %>?_method=DELETE" class="delete-form" method="POST">
-                                <button type="submit">Delete </button>
-                            </form>
-                        </div>
-                    </td>
+                    <th>Name</th>
+                    <th>Date</th>
+                    <th></th>
+                    <th></th>
                 </tr>
-            <%}); %>
+            </thead>
+            <tbody>
+                <%events.forEach(function(e){  %>
+                    <tr>
+                        <td>
+                            <%= e.name %>
+                        </td>
+                        <td>
+                            <%= e.date.toDateString() %>
+                        </td>
+                        
+                        <td><a href="/events/<%= e._id %>">SELECT</a></td>
+                        <td>
+                            <div>
+                                <form action="/events/<%= e._id %>?_method=DELETE" class="delete-form" method="POST">
+                                    <button type="submit">Delete </button>
+                                </form>
+                            </div>
+                        </td>
+                    </tr>
+                <%}); %>
+                    
+            </tbody>
                 
-        </tbody>
-            
-    </table>
+        </table>
+    </section>
         
        
     

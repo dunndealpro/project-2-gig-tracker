@@ -21,7 +21,7 @@
                         <%= e.name %>
                     </td>
                     <td>
-                        <%= e.date %>
+                        <%= e.date.toLocaleDateString() %>
                     </td>
 
                     <td><a href="/events/<%= e._id %>">SELECT</a></td>
@@ -68,14 +68,19 @@
             <%= venue.state %>
         </div>
        
+        <br>      
         <div>
-            Workers:
+            Workers:           
+        </div>
+        <div>
             <ul>
                 <%- event.workers.map(w => 
-                  `<li>${w.name} <small>${w.specialty} <a href="/workers/${w._id}">SELECT</a></small><form id="remove-worker-to-event" action="/events/${event._id}/remove/${w._id} "method="POST"><button type="submit">Remove Worker from Event</button></form></li>` ).join('') %>
+                  `<li>${w.name} <small>${w.specialty} </small><br>
+                    <form id="remove-worker-to-event" action="/events/${event._id}/remove/${w._id} "method="POST"><button class="list-button" type="submit">Remove from Event</button></form><button class="list-button"><a class="list-button" href="/events/${event._id}/${w._id}">Details</a></button></li>` ) %>
             </ul>
         </div>
         <br>
+        
 
 
         <div>Add Workers to Event</div>
@@ -112,9 +117,38 @@
             Union:
             <%= venue.union %>
         </div>
+        <h2>Worker Details</h2>
+        <div>
+            Name:
+            <%= worker.name %>
+        </div>
+        <div>
+            City:
+            <%= worker.city %>
+        </div>
+        <div>
+            Phone Number:
+            <%= worker.phoneNumber %>
+        </div>
+        <div>
+            State:
+            <%= worker.state %>
+        </div>
+        <div>
+            Specialty:
+            <%= worker.specialty %>
+        </div>
+        <div>
+            Day Rate:
+            <%= worker.dayRate %>
+        </div>
+        <div>
+            <a href="/workers/<%= worker._id %>">SELECT</a>
+        </div>
+
     </section>
 
-    <section id="selected-worker-details">
+    <!-- <section id="selected-worker-details">
         <h2>Worker Details</h2>
         <div>
             Name:
@@ -143,7 +177,7 @@
 
 
 
-    </section>
+    </section> -->
 
 
 

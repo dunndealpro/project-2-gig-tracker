@@ -146,6 +146,7 @@ h1 {
 #worker-details-input {
     grid-column-start: 2;
     grid-row-start: 3;
+    width: 100%
 }
 #worker-details {
     grid-column-start: 2;
@@ -166,9 +167,13 @@ td {
     grid-template-rows: 2;
 } */
 #form-new-worker {
-    width: 50%;
+    width: 100%%;
     display: grid;
-    grid-template-columns: 1fr 4fr;
+    grid-template-columns: 2fr 4fr;
+}
+
+#form-new-worker>input{
+    height: min-content;
 }
 #add-worker-button {
     grid-column: span: 1;
@@ -244,4 +249,9 @@ li{
     
     /* justify-content: baseline; */
     /* align-self: end; */
+}
+
+#selected-worker-details{
+    grid-column-start: 3;
+    grid-row-start: 4;
 }

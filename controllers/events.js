@@ -177,8 +177,11 @@ function detailed(req, res) {
             Worker.find({ _id: { $nin: event.workers } })
                 .exec(function(err, workers) {
                     Venue.findById(event.venue, function(err, venue) {
-                        console.log('*****', event.venue)
-                        res.render('events/show', { title: 'Details', events, event, venue, workers });
+                        Worker.findById(req.params.id1, function(err, worker){
+
+                            console.log('*****', event.venue)
+                            res.render('events/detailed', { title: 'Details', events, event, venue, workers, worker });
+                        })
                     })
                 })
         });
