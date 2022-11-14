@@ -1,12 +1,10 @@
 <%- include('../partials/header') %>
 
 
-    <h1>Welcome to
-        <%= title %>
-    </h1>
 
+
+    <h2>Current Venues</h2>
     <table id="venue-list">
-        <h2>Current Venues</h2>
         <thead>
             <tr>
                 <th>Venue</th>
@@ -27,12 +25,13 @@
                         <%= v.state %>
                     </td>
                     <td>
-                        <a href="/venues/<%= v._id %>">SELECT</a>
+                        <button><a class="list-button" href="/venues/<%= v._id %>">SELECT</a></button>
+
                     </td>
                     <td>
                         <div>
                             <form action="/venues/<%= v._id %>?_method=DELETE" class="delete-form" method="POST">
-                                <button type="submit">X </button>
+                                <button type="submit">DELETE</button>
                             </form>
                         </div>
                     </td>
@@ -46,8 +45,8 @@
 
     </table>
 
+    <h2>Enter New Venue</h2>
     <section id="venue-details-input">
-        <h2>Enter New Venue</h2>
         <form id="form-new-venue" action="/venues" method="POST">
             <label>Name:</label>
             <input type="text" name="name">

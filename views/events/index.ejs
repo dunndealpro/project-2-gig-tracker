@@ -6,7 +6,7 @@
 
     <section id="event-list">
 
-        <table >
+        <table>
             <thead>
                 <tr>
                     <th>Name</th>
@@ -24,32 +24,34 @@
                         <td>
                             <%= e.date.toDateString() %>
                         </td>
-                        
-                        <td><a href="/events/<%= e._id %>">SELECT</a></td>
-                        <td>
-                            <div>
-                                <form action="/events/<%= e._id %>?_method=DELETE" class="delete-form" method="POST">
-                                    <button type="submit">Delete </button>
-                                </form>
-                            </div>
-                        </td>
+
+                        <td><button><a class="list-button" href="/events/<%= e._id %>">SELECT</a></td></button>
+                            <td>
+                                <div>
+                                    <form action="/events/<%= e._id %>?_method=DELETE" class="delete-form" method="POST">
+                                        <button type="submit">DELETE </button>
+                                    </form>
+                                </div>
+                            </td>
                     </tr>
-                <%}); %>
-                    
+                    <%}); %>
+
             </tbody>
-                
+
         </table>
     </section>
-        
-       
-    
 
 
 
+
+
+    <h2></h2>
     <section id="event-details">
-        <h2>Event Details</h2>
+
 
     </section>
-    
-    <a id="add-event" href="/events/new">Add Event</a>
+    <button class="button"><a id="add-event" href="/events/new">Add event</a></button>
+
+
+
     <%- include('../partials/footer') %>

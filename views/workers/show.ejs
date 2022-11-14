@@ -3,7 +3,6 @@
         <%= title %>
     </h1>
 
-    <a id="add-worker" href="/workers/new">Add worker</a>
 
     <table id="worker-list">
         <thead>
@@ -26,14 +25,14 @@
                     <td>
                         <%= w.state %>
                     </td>
-                    <td><a href="/workers/<%= w._id %>">SELECT</a></td>
-                    <td>
-                        <div>
-                            <form action="/workers/<%= w._id %>?_method=DELETE" class="delete-form" method="POST">
-                                <button type="submit">X </button>
-                            </form>
-                        </div>
-                    </td>
+                    <td><button><a class="list-button" href="/workers/<%= w._id %>">SELECT</a></td></button>
+                        <td>
+                            <div>
+                                <form action="/workers/<%= w._id %>?_method=DELETE" class="delete-form" method="POST">
+                                    <button type="submit">X </button>
+                                </form>
+                            </div>
+                        </td>
                 </tr>
                 <%}); %>
 
@@ -41,8 +40,10 @@
 
     </table>
 
+    <button class="button"><a  class = "list-button" id="add-worker" href="/workers/new">Add worker</a></button>
+
+    <h2>Worker Details</h2>
     <section id="worker-details">
-        <h2>Worker Details</h2>
         <div>
             Name:
             <%= worker.name %>
@@ -52,12 +53,12 @@
             <%= worker.city %>
         </div>
         <div>
-            Phone Number:
-            <%= worker.phoneNumber %>
-        </div>
-        <div>
             State:
             <%= worker.state %>
+        </div>
+        <div>
+            Phone Number:
+            <%= worker.phoneNumber %>
         </div>
         <div>
             Specialty:
@@ -73,12 +74,13 @@
             Events Booked:
             <ul>
                 <%- worker.eventsBooked.map(w => 
-                  `<li>${w.name} <a href="/events/${w._id}">SELECT</a></li>`
+                  `<li>${w.name} <button><a class = "list-button" href="/events/${w._id}">SELECT</a></button> </li>`
                 ).join('') %>
             </ul>
         </div>
 
-        <a href="/workers/<%= worker._id %>/edit">Edit worker details</a>
+        <button><a class = "list-button" href="/workers/<%= worker._id %>/edit">Edit worker details</a></button>
+
 
     </section>
 

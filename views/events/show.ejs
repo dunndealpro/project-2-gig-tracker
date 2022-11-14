@@ -2,49 +2,49 @@
     <h1>
         <%= title %>
     </h1>
-<button class="button"><a id="add-event" href="/events/new">Add event</a></button>
-   <button class="button"><a id="add-event" href="/events/<%= event._id %>/edit">Edit event details</a></button> 
-    
+    <button class="button"><a id="add-event" href="/events/new">Add event</a></button>
+    <button class="button"><a id="add-event" href="/events/<%= event._id %>/edit">Edit event details</a></button>
 
-<section  id="event-list">
-    <table>
-        <thead>
-            <tr>
-                <th>Name</th>
-                <th>Date</th>
-                <th></th>
-                <th></th>
 
-            </tr>
-        </thead>
-        <tbody>
-            <%events.forEach(function(e){  %>
+    <section id="event-list">
+        <table>
+            <thead>
                 <tr>
-                    <td>
-                        <%= e.name %>
-                    </td>
-                    <td>
-                        <%= e.date.toLocaleDateString() %>
-                    </td>
+                    <th>Name</th>
+                    <th>Date</th>
+                    <th></th>
+                    <th></th>
 
-                    <td><a href="/events/<%= e._id %>">SELECT</a></td>
-                    <td>
-                        <div>
-                            <form action="/events/<%= e._id %>?_method=DELETE" class="delete-form" method="POST">
-                                <button type="submit">Delete </button>
-                            </form>
-                        </div>
-                    </td>
                 </tr>
-                <%}); %>
+            </thead>
+            <tbody>
+                <%events.forEach(function(e){  %>
+                    <tr>
+                        <td>
+                            <%= e.name %>
+                        </td>
+                        <td>
+                            <%= e.date.toLocaleDateString() %>
+                        </td>
 
-        </tbody>
+                        <td><button><a class='list-button' href="/events/<%= e._id %>">SELECT</a></td></button>
+                            <td>
+                                <div>
+                                    <form action="/events/<%= e._id %>?_method=DELETE" class="delete-form" method="POST">
+                                        <button type="submit">Delete </button>
+                                    </form>
+                                </div>
+                            </td>
+                    </tr>
+                    <%}); %>
 
-    </table>
+            </tbody>
 
-</section>
+        </table>
 
-<h2>Event Details</h2>
+    </section>
+
+    <h1>Event Details</h1>
     <section id="event-details">
 
         <div>
@@ -62,16 +62,16 @@
         <div>
             Event Start(Doors):
             <%= event.date.toLocaleTimeString() %>
-        </div>       
-        <br>      
+        </div>
+        <br>
         <div>
-            Workers:           
+            Workers:
         </div>
         <div>
             <ul>
                 <%- event.workers.map(w => 
-                  `<li>${w.name} <small>${w.specialty} </small><br>
-                    <form id="remove-worker-to-event" action="/events/${event._id}/remove/${w._id} "method="POST"><button class="list-button" type="submit">Remove from Event</button></form><button class="list-button"><a class="list-button" href="/events/${event._id}/${w._id}">Details</a></button></li>` ) %>
+                  `<li>${w.name} - ${w.specialty} <br>
+                    <form id="remove-worker-to-event" action="/events/${event._id}/remove/${w._id} "method="POST"><button class="list-button" type="submit">Remove from Event</button></form><button class="list-button"><a class="list-button" href="/events/${event._id}/${w._id}">Details</a></button></li>` ).join('') %>
             </ul>
         </div>
         <br>
@@ -84,10 +84,10 @@
             </select>
             <button type="submit">Add Worker to Event</button>
         </form>
-        
+
     </section>
 
-    <h2 class="selected-stuff">Venue Details</h2>
+    <h1>Venue Details</h1>
     <section id="selected-details">
 
 

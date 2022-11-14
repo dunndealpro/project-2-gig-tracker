@@ -3,8 +3,8 @@
     <h1>
         <%= title %>
     </h1>
+    <button class="button"><a class="list-button" id="add-worker" href="/workers/new">Add Worker</a></button>
 
-    <a id="add-worker" href="/workers/new">Add worker</a>
 
 
     <table id="worker-list">
@@ -28,24 +28,19 @@
                     <td>
                         <%= w.state %>
                     </td>
-                    <td><a href="/workers/<%= w._id %>">SELECT</a></td>
-                    <td>
-                        <div>
-                            <form action="/workers/<%= w._id %>?_method=DELETE" class="delete-form" method="POST">
-                                <button type="submit">X </button>
-                            </form>
-                        </div>
-                    </td>
+                    <td><button><a class="list-button" href="/workers/<%= w._id %>">SELECT</a></td></button>
+                        <td>
+                            <div>
+                                <form action="/workers/<%= w._id %>?_method=DELETE" class="delete-form" method="POST">
+                                    <button type="submit">X </button>
+                                </form>
+                            </div>
+                        </td>
                 </tr>
                 <%}); %>
 
         </tbody>
 
     </table>
-
-    <section id="worker-details">
-        <h2>Worker Details</h2>
-
-    </section>
 
     <%- include('../partials/footer') %>

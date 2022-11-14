@@ -27,7 +27,8 @@
                         <%= w.state %>
                     </td>
                     <td>
-                        <a href="/workers/<%= w._id %>">SELECT</a>
+                        <button><a class="list-button" href="/workers/<%= w._id %>">SELECT</a></button>
+
                     </td>
                     <td>
                         <div>
@@ -47,25 +48,26 @@
             <label>Name:</label>
             <input type="text" name="name" value="<%= worker.name %> ">
             <label>Phone Number:</label>
-            <input type="number" name="phoneNumber" value="<%= worker.phoneNumber %> ">
+            <input type="tel" id="phone" name="phoneNumber" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required value="<%= worker.phoneNumber %>">
             <label>City:</label>
             <input type="text" name="city" value="<%= worker.city %> ">
             <label>State: </label>
             <input type="text" name="state" value="<%= worker.state %> ">
             <label>Specialty:</label>
             <select name="specialty">
-                <%=  %> 
-                <option value="none" selected disabled hidden>Select a Specialty</option>
-                <option value="audioEngineer">Audio Engineer</option>
-                <option value="audioTech">Audio Tech</option>
-                <option value='lightingEngineer'>Lighting Engineer</option>
-                <option value='lightingTech'>Lighting Tech</option>
-                <option value="video">Video</option>
-                <option value="rigging">Rigging</option>
-                <option value="stagehand">Stage Hand</option>
-                <option value="stageManager">Stage Manager</option>
+                
+                <option value="<%= worker.specialty%> "><%=  worker.specialty%> </option>
+                <option value="Audio Engineer">Audio Engineer</option>
+                <option value="Audio Tech">Audio Tech</option>
+                <option value='Lighting Engineer'>Lighting Engineer</option>
+                <option value='Lighting Tech'>Lighting Tech</option>
+                <option value="Video">Video</option>
+                <option value="Rigging">Rigging</option>
+                <option value="Stage Manager">Stage Manager</option>
+                <option value="Stagehand">Stage Hand</option>
 
             </select>
+
 
             <label>Day Rate: </label>
             <input type="number" name="dayRate" value="<%= worker.dayRate %>">
@@ -73,7 +75,7 @@
             <!-- insert forEach loop here to create check box options -->
 
 
-            <input type="submit" value="Update Worker Info ">
+            <input id="add-venue-button" type="submit" value="Update Worker Info ">
         </form>
 
     </section>

@@ -24,7 +24,7 @@ https://trello.com/invite/b/YOBnTbBd/ATTI8ee0c9a0f0b1b3c5f487251a005989b515614C7
 - AAU I want to be able to see and add/remove venues
 - AAU I want to be able to see and add/remove independent contractors
 - AAU when viewing a gig detail page, I want to be able to see information about the venue.
-- AAU when viewing list of all venues, I want to have a asterisk for venue in upcoming events
+
 
 - Stretch Goals
     - AAU I want to be able to add to a list of food nearby the venue

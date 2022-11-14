@@ -3,8 +3,8 @@
         <%= title %>
     </h1>
 
-    <a id="add-event" href="/events/new">Add event</a>
-
+    <button class="button"><a id="add-event" href="/events/new">Add event</a></button>
+    <button class="button"><a id="add-event" href="/events/<%= event._id %>/edit">Edit event details</a></button>
 
     <table id="event-list">
         <thead>
@@ -24,24 +24,23 @@
                         <%= e.date.toLocaleDateString() %>
                     </td>
 
-                    <td><a href="/events/<%= e._id %>">SELECT</a></td>
-                    <td>
-                        <div>
-                            <form action="/events/<%= e._id %>?_method=DELETE" class="delete-form" method="POST">
-                                <button type="submit">X </button>
-                            </form>
-                        </div>
-                    </td>
+                    <td><button><a class="list-button" href="/events/<%= e._id %>">SELECT</a></td></button>
+                        <td>
+                            <div>
+                                <form action="/events/<%= e._id %>?_method=DELETE" class="delete-form" method="POST">
+                                    <button type="submit">DELETE </button>
+                                </form>
+                            </div>
+                        </td>
                 </tr>
                 <%}); %>
 
         </tbody>
 
     </table>
+    <h2>Event Details</h2>
 
     <section id="event-details">
-        <h2>Event Details</h2>
-
         <div>
             Event Name:
             <%= event.name %>
@@ -52,35 +51,26 @@
         </div>
         <div>
             Date:
-            <%= event.date %>
+            <%= event.date.toDateString() %>
+        </div>
+        <div>
+            Event Start(Doors):
+            <%= event.date.toLocaleTimeString() %>
         </div>
 
+        <br>
         <div>
-            Venue:
-            <%= venue.name %>
-        </div>
-        <div>
-            City:
-            <%= venue.city %>
-        </div>
-        <div>
-            State:
-            <%= venue.state %>
-        </div>
-       
-        <br>      
-        <div>
-            Workers:           
+            Workers:
         </div>
         <div>
             <ul>
                 <%- event.workers.map(w => 
                   `<li>${w.name} <small>${w.specialty} </small><br>
-                    <form id="remove-worker-to-event" action="/events/${event._id}/remove/${w._id} "method="POST"><button class="list-button" type="submit">Remove from Event</button></form><button class="list-button"><a class="list-button" href="/events/${event._id}/${w._id}">Details</a></button></li>` ) %>
+                    <form id="remove-worker-to-event" action="/events/${event._id}/remove/${w._id} "method="POST"><button class="list-button" type="submit">Remove from Event</button></form><button class="list-button"><a class="list-button" href="/events/${event._id}/${w._id}">Details</a></button></li>` ).join('') %>
             </ul>
         </div>
         <br>
-        
+
 
 
         <div>Add Workers to Event</div>
@@ -90,11 +80,11 @@
             </select>
             <button type="submit">Add Worker to Event</button>
         </form>
-        <a href="/events/<%= event._id %>/edit">Edit event details</a>
+
     </section>
 
+    <h2>Venue Details</h2>
     <section id="selected-details">
-        <h2>Venue Details</h2>
 
 
         <div>
@@ -143,7 +133,7 @@
             <%= worker.dayRate %>
         </div>
         <div>
-            <a href="/workers/<%= worker._id %>">SELECT</a>
+            <button><a class="list-button" href="/workers/<%= worker._id %>">SELECT</a></button>
         </div>
 
     </section>

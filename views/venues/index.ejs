@@ -3,12 +3,12 @@
     <h1>
         <%= title %>
     </h1>
+    <button class="button"><a class= "list-button" id="add-venue" href="/venues/new">Add Venue</a></button>
 
-    <a id="add-venue" href="/venues/new">Add Venue</a>
+
 
 
     <table id="venue-list">
-        <h2>Current Venues</h2>
         <thead>
             <tr>
                 <th>Venue</th>
@@ -29,7 +29,8 @@
                         <%= v.state %>
                     </td>
                     <td>
-                        <a href="/venues/<%= v._id %>">SELECT</a>
+                        <button><a class="list-button" href="/venues/<%= v._id %>">SELECT</a></button>
+
                     </td>
                     <td>
                         <div>
@@ -42,15 +43,8 @@
 
                 <%}); %>
         </tbody>
-
-
-
-
     </table>
 
-    <section id="venue-details">
-        <h2>Venue Details</h2>
 
-    </section>
 
     <%- include('../partials/footer') %>

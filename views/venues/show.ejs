@@ -1,13 +1,11 @@
 <%- include('../partials/header') %>
-    <h1>
-        <%= title %>
-    </h1>
 
-    <a id="add-venue" href="/venues/new">Add Venue</a>
+    <button class="button"><a class= "list-button" id="add-venue" href="/venues/new">Add Venue</a></button>
 
+
+    <h2>Current Venues</h2>
 
     <table id="venue-list">
-        <h2>Current Venues</h2>
         <thead>
             <tr>
                 <th>Venue</th>
@@ -28,12 +26,13 @@
                         <%= v.state %>
                     </td>
                     <td>
-                        <a href="/venues/<%= v._id %>">SELECT</a>
+                        <button><a class="list-button" href="/venues/<%= v._id %>">SELECT</a></button>
+
                     </td>
                     <td>
                         <div>
                             <form action="/venues/<%= v._id %>?_method=DELETE" class="delete-form" method="POST">
-                                <button type="submit">X </button>
+                                <button type="submit">DELETE </button>
                             </form>
                         </div>
                     </td>
@@ -44,8 +43,8 @@
 
     </table>
 
+    <h2>Venue Details</h2>
     <section id="venue-details">
-        <h2>Venue Details</h2>
 
 
         <div>
@@ -70,15 +69,16 @@
         </div>
         <div>
             Events:
+
             <ul>
                 <%- venue.events.map(e => 
-                  `<li>${e.name} <a href="/events/${e._id}">SELECT</a> </li>`
+                  `<li>${e.name}  <button> <a class="list-button" href="/events/${e._id}">SELECT</a> </button></li>`
                 ).join('') %>
             </ul>
         </div>
 
+        <button><a class="list-button" href="/venues/<%= venue._id %>/edit">Edit venue details</a></button>
 
-        <a href="/venues/<%= venue._id %>/edit">Edit venue details</a>
 
 
 

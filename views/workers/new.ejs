@@ -1,34 +1,50 @@
 <%- include('../partials/header') %>
 
 
-    <h1>
-        <%= title %>
-    </h1>
 
-    <section id="worker-list">
-        <h2>Current workers</h2>
-        <%workers.forEach(function(w){  %>
-            <div>
-                <%= w.name %>
-            </div>
-            <div>
-                <%= w.city %>
-            </div>
-            <div>
-            </div>
-            <div>
-                <a href="/workers/<%= w._id %>">SELECT</a>
-            </div>
+    <h2>Current workers</h2>
+    <table id="worker-list">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>City</th>
+                <th>State</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <%workers.forEach(function(w){  %>
+                <tr>
+                    <td>
+                        <%= w.name %>
+                    </td>
+                    <td>
+                        <%= w.city %>
+                    </td>
+                    <td>
+                        <%= w.state %>
+                    </td>
+                    <td><button><a class="list-button" href="/workers/<%= w._id %>">SELECT</a></td></button>
+                        <td>
+                            <div>
+                                <form action="/workers/<%= w._id %>?_method=DELETE" class="delete-form" method="POST">
+                                    <button type="submit">X </button>
+                                </form>
+                            </div>
+                        </td>
+                </tr>
+                <%}); %>
 
-            <%}); %>
-    </section>
+        </tbody>
+
+    </table>
+    <h2>Enter New worker</h2>
 
     <section id="worker-details-input">
-        <h2>Enter New worker</h2>
         <form id="form-new-worker" action="/workers" method="POST">
             <label>Name:</label>
             <input type="text" name="name">
-            <label>Phone Number:(XXX-XXX-XXXX)</label>
+            <label>Phone Number: <br> (XXX-XXX-XXXX)</label>
             <input type="tel" id="phone" name="phoneNumber" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required>
 
             <label>City:</label>

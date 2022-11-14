@@ -27,7 +27,8 @@
                         <%= v.state %>
                     </td>
                     <td>
-                        <a href="/venues/<%= v._id %>">SELECT</a>
+                        <button><a class="list-button" href="/venues/<%= v._id %>">SELECT</a></button>
+
                     </td>
                     <td>
                         <div>
@@ -86,7 +87,7 @@
                 <option value="Yes">Yes</option>
                 <option value="No">No</option>
             </select>
-            <input type="submit" value="Update Venue Info">
+            <input id="add-venue-button" type="submit" value="Update Venue Info">
         </form>
 
     </section>
