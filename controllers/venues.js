@@ -40,10 +40,6 @@ function create(req, res) {
 function show(req, res) {
     Venue.find({}, function(err, venues) {
         Venue.findById(req.params.id).populate('events').exec(function(err, venue) {
-
-            // console.log(venue)
-            console.log("Yass!?")
-            console.log(venue)
             res.render('venues/show', { title: 'Details', venues, venue });
         });
     });
@@ -62,9 +58,7 @@ function deleteVenue(req, res) {
 
 function editVenueDetails(req, res) {
     Venue.find({}, function(err, venues) {
-        console.log('edit venue begin')
         Venue.findById(req.params.id, function(err, venue) {
-            console.log(venue)
             if (err) console.log(err)
             res.render(`venues/edit`, { title: "Edit Venue", venue, venues })
         })
@@ -73,17 +67,12 @@ function editVenueDetails(req, res) {
 
 function updateVenue(req, res) {
     Venue.findById(req.params.id, function(err, venue) {
-        //     console.log("venue")
-        //     console.log(venue)
-        console.log("Update venue working?")
         venue.name = req.body.name,
-
             venue.city = req.body.city,
             venue.state = req.body.state,
             venue.power = req.body.power,
             venue.union = req.body.union,
             venue.save(function(err) {
-                console.log('Huh', venue._id)
                 res.redirect(`/venues/${venue._id}`)
             })
     })

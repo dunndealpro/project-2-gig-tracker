@@ -6,12 +6,7 @@
     </h1>
 
     <table id="event-list">
-        <thead>
-            <tr>
-                <th>Name</th>
-                <th>Date</th>
-            </tr>
-        </thead>
+
         <tbody>
             <%events.forEach(function(e){  %>
                 <tr>
@@ -22,22 +17,19 @@
                         <%= e.date.toLocaleDateString()%>
                     </td>
 
-                    <td><a href="/events/<%= e._id %>">SELECT</a></td>
-                    <td>
-                        <div>
-                            <form action="/events/<%= e._id %>?_method=DELETE" class="delete-form" method="POST">
-                                <button type="submit">X </button>
-                            </form>
-                        </div>
-                    </td>
+                    <td><button><a class='list-button' href="/events/<%= e._id %>">SELECT</a></td></button>
+                        <td>
+                            <div>
+                                <form action="/events/<%= e._id %>?_method=DELETE" class="delete-form" method="POST">
+                                    <button type="submit">DELETE </button>
+                                </form>
+                            </div>
+                        </td>
                 </tr>
                 <%}); %>
-
         </tbody>
-
     </table>
     </section>
-
 
     <section id="event-details-input">
         <form id="form-new-event" action="/events/<%= event.id %>?_method=PUT" method="POST">
@@ -45,9 +37,7 @@
             <input type="text" name="name" value="<%= event.name %>">
             <label>Client/Promoter:</label>
             <input type="text" name="client" value="<%=event.client %>">
-
             <label>Event Date/Time:</label>
-
             <input type="datetime-local" name="date" value="<%= editDate %>">
             <label>Venues:</label>
             <select name="venue">
@@ -56,11 +46,9 @@
                 <option value="<%=v._id%>">
             <%=v.name%>
                 </option>
-                <%})%>
-                
+                <%})%>                
                     </select>
             </select>
-
             <input id="edit-event-info" type="submit" value="Edit event Info">
         </form>
     </section>

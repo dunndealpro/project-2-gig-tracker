@@ -3,16 +3,9 @@
     <button class="button"><a class= "list-button" id="add-venue" href="/venues/new">Add Venue</a></button>
 
 
-    <h2>Current Venues</h2>
+    <h1>Current Venues</h1>
 
     <table id="venue-list">
-        <thead>
-            <tr>
-                <th>Venue</th>
-                <th>City</th>
-                <th>State</th>
-            </tr>
-        </thead>
         <tbody>
             <%venues.forEach(function(v){  %>
                 <tr>
@@ -37,16 +30,12 @@
                         </div>
                     </td>
                 </tr>
-
                 <%}); %>
         </tbody>
-
     </table>
 
-    <h2>Venue Details</h2>
+    <h1>Venue Details</h1>
     <section id="venue-details">
-
-
         <div>
             Venue Name:
             <%= venue.name %>
@@ -69,19 +58,13 @@
         </div>
         <div>
             Events:
-
             <ul>
                 <%- venue.events.map(e => 
                   `<li>${e.name}  <button> <a class="list-button" href="/events/${e._id}">SELECT</a> </button></li>`
                 ).join('') %>
             </ul>
         </div>
-
         <button><a class="list-button" href="/venues/<%= venue._id %>/edit">Edit venue details</a></button>
-
-
-
-
     </section>
 
     <%- include('../partials/footer') %>

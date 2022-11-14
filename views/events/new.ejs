@@ -1,20 +1,9 @@
 <%- include('../partials/header') %>
-
-
     <h1>
         <%= title %>
     </h1>
 
     <table id="event-list">
-        <thead>
-            <tr>
-                <th>Name</th>
-                <th>Date</th>
-
-
-
-            </tr>
-        </thead>
         <tbody>
             <%events.forEach(function(e){  %>
                 <tr>
@@ -22,27 +11,25 @@
                         <%= e.name %>
                     </td>
                     <td>
-                        <%= e.date %>
+                        <%= e.date.toDateString() %>
                     </td>
 
-                    <td><a href="/events/<%= e._id %>">SELECT</a></td>
-                    <td>
-                        <div>
-                            <form action="/events/<%= e._id %>?_method=DELETE" class="delete-form" method="POST">
-                                <button type="submit">X </button>
-                            </form>
-                        </div>
-                    </td>
+                    <td><button><a class="list-button"href="/events/<%= e._id %>">SELECT</a></td></button>
+                        <td>
+                            <div>
+                                <form action="/events/<%= e._id %>?_method=DELETE" class="delete-form" method="POST">
+                                    <button type="submit">X </button>
+                                </form>
+                            </div>
+                        </td>
                 </tr>
                 <%}); %>
-
         </tbody>
-
     </table>
     </section>
 
+    <h1>Enter New event</h1>
     <section id="event-details-input">
-        <h2>Enter New event</h2>
         <form id="form-new-event" action="/events" method="POST">
             <label>Event Name:</label>
             <input type="text" name="name">
@@ -56,20 +43,6 @@
                 <option value="<%=v._id%>"><%=v.name%></option>
             <%})%> 
              </select>
-            <!-- <label>Venue:</label>
-            <input type="text" name="venue"> -->
-            <!-- <label>City:</label>
-            <input type="text" name="city">
-            <label>State: </label>
-            <input type="text" name="state"> -->
-           
-            <label>Workers:</label>
-            <!-- <select name="workers">
-                <%  workers.forEach(function(w){ %>
-                    <option value="<%= w._id %> "><%= w.name %> </option>
-                <% }) %> 
-                 </select> -->
-
             <input id="add-event-button" type="submit" value="Add event">
         </form>
 

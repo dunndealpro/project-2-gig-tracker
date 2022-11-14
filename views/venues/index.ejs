@@ -4,18 +4,7 @@
         <%= title %>
     </h1>
     <button class="button"><a class= "list-button" id="add-venue" href="/venues/new">Add Venue</a></button>
-
-
-
-
     <table id="venue-list">
-        <thead>
-            <tr>
-                <th>Venue</th>
-                <th>City</th>
-                <th>State</th>
-            </tr>
-        </thead>
         <tbody>
             <%venues.forEach(function(v){  %>
                 <tr>
@@ -30,7 +19,6 @@
                     </td>
                     <td>
                         <button><a class="list-button" href="/venues/<%= v._id %>">SELECT</a></button>
-
                     </td>
                     <td>
                         <div>
@@ -40,11 +28,8 @@
                         </div>
                     </td>
                 </tr>
-
                 <%}); %>
         </tbody>
     </table>
-
-
 
     <%- include('../partials/footer') %>

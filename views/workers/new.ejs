@@ -1,8 +1,7 @@
 <%- include('../partials/header') %>
 
-
-
     <h2>Current workers</h2>
+
     <table id="worker-list">
         <thead>
             <tr>
@@ -34,10 +33,9 @@
                         </td>
                 </tr>
                 <%}); %>
-
         </tbody>
-
     </table>
+
     <h2>Enter New worker</h2>
 
     <section id="worker-details-input">
@@ -46,7 +44,6 @@
             <input type="text" name="name">
             <label>Phone Number: <br> (XXX-XXX-XXXX)</label>
             <input type="tel" id="phone" name="phoneNumber" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required>
-
             <label>City:</label>
             <input type="text" name="city">
             <label>State: </label>
@@ -62,18 +59,11 @@
                 <option value="Rigging">Rigging</option>
                 <option value="Stage Manager">Stage Manager</option>
                 <option value="Stagehand">Stage Hand</option>
-
             </select>
-
             <label>Day Rate: </label>
             <input type="number" name="dayRate">
-            <!-- <label>Venues Worked at: </label> -->
-            <!-- insert forEach loop here to create check box options -->
-
-
             <input id="add-worker-button" type="submit" value="Add Worker">
         </form>
-
     </section>
 
     <%- include('../partials/footer') %>

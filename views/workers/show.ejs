@@ -3,14 +3,10 @@
         <%= title %>
     </h1>
 
-
     <table id="worker-list">
         <thead>
             <tr>
-                <th>Name</th>
-                <th>City</th>
-                <th>State</th>
-                <th></th>
+
             </tr>
         </thead>
         <tbody>
@@ -35,9 +31,7 @@
                         </td>
                 </tr>
                 <%}); %>
-
         </tbody>
-
     </table>
 
     <button class="button"><a  class = "list-button" id="add-worker" href="/workers/new">Add worker</a></button>
@@ -68,7 +62,6 @@
             Day Rate:
             <%= worker.dayRate %>
         </div>
-
 
         <div>
             Events Booked:

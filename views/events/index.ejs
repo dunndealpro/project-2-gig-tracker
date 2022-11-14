@@ -7,14 +7,6 @@
     <section id="event-list">
 
         <table>
-            <thead>
-                <tr>
-                    <th>Name</th>
-                    <th>Date</th>
-                    <th></th>
-                    <th></th>
-                </tr>
-            </thead>
             <tbody>
                 <%events.forEach(function(e){  %>
                     <tr>
@@ -35,23 +27,10 @@
                             </td>
                     </tr>
                     <%}); %>
-
             </tbody>
-
         </table>
     </section>
 
-
-
-
-
-    <h2></h2>
-    <section id="event-details">
-
-
-    </section>
     <button class="button"><a id="add-event" href="/events/new">Add event</a></button>
-
-
 
     <%- include('../partials/footer') %>
