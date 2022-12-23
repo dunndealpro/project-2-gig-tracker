@@ -2,7 +2,7 @@
 
 ## Welcome to Dunn Deal Production's Gig Tracker
 
-- Gig Tracker is e a RESTful CRUD app that a Production Manager in the live event/concert industry can use to manage their events, workers, and venues.  A user will be able to add/remove information about upcoming and past events/gigs, venue information and workforce contacts.
+- Gig Tracker is a RESTful CRUD app that a Production Manager in the live event/concert industry can use to manage their events, workers, and venues.  A user will be able to add/remove information about upcoming and past events/gigs, venue information and workforce contacts.
 
 ## Screenshots
 
