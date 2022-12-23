@@ -76,5 +76,4 @@ function updateVenue(req, res) {
                 res.redirect(`/venues/${venue._id}`)
             })
     })
-
 }
