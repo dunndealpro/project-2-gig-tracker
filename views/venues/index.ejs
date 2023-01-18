@@ -1,35 +1,70 @@
 <%- include('../partials/header') %>
+    <div class="container-fluid">
+        <h1>
+            <%= title %>
+        </h1>
+        <button class="button"><a class="list-button" id="add-venue" href="/venues/new">Add Venue</a></button>
 
-    <h1>
-        <%= title %>
-    </h1>
-    <button class="button"><a class= "list-button" id="add-venue" href="/venues/new">Add Venue</a></button>
-    <table id="venue-list">
-        <tbody>
-            <%venues.forEach(function(v){  %>
-                <tr>
-                    <td>
-                        <%= v.name %>
-                    </td>
-                    <td>
-                        <%= v.city %>
-                    </td>
-                    <td>
-                        <%= v.state %>
-                    </td>
-                    <td>
-                        <button><a class="list-button" href="/venues/<%= v._id %>">SELECT</a></button>
-                    </td>
-                    <td>
-                        <div>
-                            <form action="/venues/<%= v._id %>?_method=DELETE" class="delete-form" method="POST">
-                                <button type="submit">X </button>
-                            </form>
+        <!-- <table id="venue-list">
+            <tbody>
+                <%venues.forEach(function(v){  %>
+                    
+                        <tr>
+                            <td>
+                                <%= v.name %>
+                            </td>
+                            <td>
+                                <%= v.city %>
+                            </td>
+                            <td>
+                                <%= v.state %>
+                            </td>
+                            <td>
+                                <button><a class="list-button" href="/venues/<%= v._id %>">SELECT</a></button>
+                            </td>
+                            <td>
+                                <div>
+                                    <form action="/venues/<%= v._id %>?_method=DELETE" class="delete-form" method="POST">
+                                        <button type="submit">X </button>
+                                    </form>
+                                </div>
+                            </td>
+                        </tr>
+                    
+                    <%}); %>
+            </tbody>
+        </table> -->
+        <div class="col-sm-6">
+            <%venues.forEach(function(v){ %>
+                <div class="card">
+                    <div class="card-body">
+
+                        <h4 class="card-title">
+                            <%= v.name %>
+                        </h4>
+                        <p class="card-text">
+                            <%= v.city %>, <%= v.state %>
+                        </p>
+                        <div class="d-grid gap-2 col-6 mx-auto ">
+                            <a class="btn btn-outline-primary" href="/venues/<%= v._id %>">SELECT</a>
                         </div>
-                    </td>
-                </tr>
+                        
+                        <div class="d-grid gap-2 col-6 mx-auto ">                            
+                            <form class="row g-3" action="/venues/<%= v._id %>?_method=DELETE" method="POST">
+                                <button class="btn btn-outline-danger" type="submit">Delete</button>
+                            </form>
+                            
+                        </div>
+
+
+
+                    </div>
+                </div>
                 <%}); %>
-        </tbody>
-    </table>
+
+        </div>
+    </div>
+
+    </div>
 
     <%- include('../partials/footer') %>
