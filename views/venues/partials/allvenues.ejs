@@ -1,0 +1,28 @@
+<div class="">
+    <%venues.forEach(function(v){ %>
+        <div class="card">
+            <div class="card-body">
+
+                <h4 class="card-title">
+                    <%= v.name %>
+                </h4>
+                <p class="card-text">
+                    <%= v.city %>, <%= v.state %>
+                </p>
+                <div class="d-grid gap-2 col-6 mx-auto ">
+                    <a class="btn btn-outline-primary" href="/venues/<%= v._id %>">SELECT</a>
+                </div>
+                
+                <div class="d-grid gap-2 col-6 mx-auto ">                            
+                    <a class="btn btn-outline-primary" href="/venues/<%= v._id %>/delete" method="DELETE">Delete</a>
+                    <!-- <form class="row g-3" action="/venues/<%= v._id %>?_method=DELETE" method="POST">
+                        <button class="btn btn-outline-danger" type="submit">Delete</button>
+                    </form> -->
+                    
+                </div>
+            </div>
+        </div>
+        <%}); %>
+
+</div>
+</div>
