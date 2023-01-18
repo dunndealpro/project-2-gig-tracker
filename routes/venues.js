@@ -10,6 +10,6 @@ router.get('/venues/:id', isLoggedIn, venuesCtrl.show);
 router.post('/venues/', isLoggedIn, venuesCtrl.create);
 router.get('/venues/:id/edit', isLoggedIn, venuesCtrl.editVenueDetails);
 router.put('/venues/:id', isLoggedIn, venuesCtrl.updateVenue);
-router.delete('/venues/:id', isLoggedIn, venuesCtrl.deleteVenue)
+router.get('/venues/:id/delete', isLoggedIn, venuesCtrl.deleteVenue)
 
 module.exports = router
