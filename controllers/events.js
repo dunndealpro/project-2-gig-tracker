@@ -2,6 +2,7 @@ const Worker = require('../models/worker');
 const Venue = require('../models/venue');
 const Event = require('../models/event');
 const { events } = require('../models/user');
+const venue = require('../models/venue');
 
 module.exports = {
     index,
@@ -41,15 +42,35 @@ function editEventDetails(req, res) {
 
 function updateEvent(req, res) {
     Event.findById(req.params.id, function(err, event) {
+        oldVenue = event.venue,
+        newVenue = req.body.venue,
         event.name = req.body.name,
-            event.client = req.body.client,
-            event.date = req.body.date,
-            event.venue = req.body.venue,
-            event.duration = req.body.duration,
-            event.save(function(err) {
+        event.client = req.body.client,
+        event.date = req.body.date,
+        event.venue = newVenue,
+        Venue.findById(oldVenue, function(err, venueOld){
+            console.log("huh", venueOld)
+            idx=venueOld.events.indexOf(event._id)
+            venueOld.events.splice(idx, 1)
+            console.log(venueOld.events)
+            console.log(newVenue)
+            venueOld.save()
+        })
+        Venue.findById(newVenue, function(err, venueNew){
+            venueNew.events.push(event)
+            venueNew.save()
+        })
+        
+        event.save(function(err) {
                 res.redirect(`/events/${event._id}`)
             })
+            
     })
+
+    Venue.findById(req.body.venue, function(err, venue){
+        Venue.events
+    })
+    console.log("update working?")
 }
 
 function addToEvent(req, res) {

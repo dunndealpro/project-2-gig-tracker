@@ -1,70 +1,30 @@
 <%- include('../partials/header') %>
 
-    <button class="button"><a class= "list-button" id="add-venue" href="/venues/new">Add Venue</a></button>
+    <div class="container text-center">
+        <div class="row">
+            <div class="col-md">
+                <h1>Selected Venue Details</h1> <div class="d-grid gap-2 col overflow-auto">
+                    <a class="btn btn-primary" href="/venues/<%= venue._id %>/edit">Edit venue details</a>
+                    <%- include('../venues/partials/selected') %>
+                </div>
+                
+            </div>
+            <div class="col-md">
+                <h1>Current Venues</h1>
+                <div class="d-grid gap-2 col overflow-auto">
+                    <a class="btn btn-primary" id="add-venue" href="/venues/new">Add Venue</a>
+                    <%- include('../venues/partials/allvenues') %>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
 
 
-    <h1>Current Venues</h1>
 
-    <table id="venue-list">
-        <tbody>
-            <%venues.forEach(function(v){  %>
-                <tr>
-                    <td>
-                        <%= v.name %>
-                    </td>
-                    <td>
-                        <%= v.city %>
-                    </td>
-                    <td>
-                        <%= v.state %>
-                    </td>
-                    <td>
-                        <button><a class="list-button" href="/venues/<%= v._id %>">SELECT</a></button>
 
-                    </td>
-                    <td>
-                        <div>
-                            <form action="/venues/<%= v._id %>?_method=DELETE" class="delete-form" method="POST">
-                                <button type="submit">DELETE </button>
-                            </form>
-                        </div>
-                    </td>
-                </tr>
-                <%}); %>
-        </tbody>
-    </table>
 
-    <h1>Venue Details</h1>
-    <section id="venue-details">
-        <div>
-            Venue Name:
-            <%= venue.name %>
-        </div>
-        <div>
-            City:
-            <%= venue.city %>
-        </div>
-        <div>
-            State:
-            <%= venue.state %>
-        </div>
-        <div>
-            Power Service:
-            <%= venue.power %>
-        </div>
-        <div>
-            Union:
-            <%= venue.union %>
-        </div>
-        <div>
-            Events:
-            <ul>
-                <%- venue.events.map(e => 
-                  `<li>${e.name}  <button> <a class="list-button" href="/events/${e._id}">SELECT</a> </button></li>`
-                ).join('') %>
-            </ul>
-        </div>
-        <button><a class="list-button" href="/venues/<%= venue._id %>/edit">Edit venue details</a></button>
-    </section>
+
 
     <%- include('../partials/footer') %>
