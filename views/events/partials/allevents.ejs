@@ -1,0 +1,30 @@
+<%events.forEach(function(e){ %>
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">
+                <%= e.name %>
+            </h4>
+            <h4 class="card-text">
+                <%= e.date.toDateString() %>
+            </h4>
+        </div>
+        <div class="d-grid gap-2 col-6 mx-auto">
+            <a class="btn btn-outline-primary" href="/events/<%= e._id%>">SELECT</a>
+        </div>
+        <div>
+            <a class="btn btn-outline-danger" href="/events/<%= e._id%>/delete" method="DELETE">Delete</a>
+            <!-- <form action="/events/<%= e._id %>?_method=DELETE" class="delete-form" method="POST">
+                <button type="submit">DELETE </button>
+            </form> -->
+        </div>
+
+        <!-- <td><button><a class="btn btn-outline-primary" href="/events/<%= e._id %>">SELECT</a></td></button>
+        <td>
+            <div>
+                <form action="/events/<%= e._id %>?_method=DELETE" class="delete-form" method="POST">
+                    <button type="submit">DELETE </button>
+                </form>
+            </div>
+        </td> -->
+    </div>
+    <%}); %>

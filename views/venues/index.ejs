@@ -1,9 +1,9 @@
 <%- include('../partials/header') %>
     <div class="container-fluid">
-        <h1>
+        <h1 class="text-center col-md-6">
             <%= title %>
         </h1>
-        <div class="d-grid gap-2 col-sm-6 overflow-auto">
+        <div class="d-grid gap-2 col-md-6 overflow-auto">
            <a class="btn btn-primary" id="add-venue" href="/venues/new">Add Venue</a>
            <%- include('../venues/partials/allvenues') %>
         </div>

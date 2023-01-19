@@ -1,8 +1,61 @@
 <%- include('../partials/header') %>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-6">
+            <h1>Edit Venue</h1>
+            <section id="venue-details-input">
+                <form id="form-new-venue" action="/venues/<%= venue.id %>?_method=PUT " method="POST">
+                    <label>Name:</label>
+                    <input class="form-control" type="text" name="name" value="<%= venue.name %> ">
+                    <label>City:</label>
+                    <input class="form-control" type="text" name="city" value="<%=venue.city %> ">
+                    <label>State: </label>
+                    <input class="form-control" type="text" name="state" value="<%=venue.state %> ">
+                    <label>Power:</label>
+                    <select name="power" class="form-select form-select mb-3" aria-label=".form-select-lg example">
+                        <% if (venue.power==="1 PHASE 100A") { %>
+                            <option value="1 PHASE 100A" selected>Single-Phase - 100A</option>
+                            <option value="3 PHASE 100A">3-Phase - 100A</option>
+                            <option value="3 PHASE 200A" >3-Phase - 200A</option>
+                            <option value="3 PHASE 400A">3-Phase - 400A</option>
+                            
+                            <% } else if (venue.power==="3 PHASE 100A") { %>
+                                <option value="1 PHASE 100A" >Single-Phase - 100A</option>
+                                <option value="3 PHASE 100A" selected>3-Phase - 100A</option>
+                                <option value="3 PHASE 200A" >3-Phase - 200A</option>
+                                <option value="3 PHASE 400A">3-Phase - 400A</option>
+                                
+                                <% } else if (venue.power==="3 PHASE 200A") { %>
+                                    <option value="1 PHASE 100A" >Single-Phase - 100A</option>
+                                    <option value="3 PHASE 100A">3-Phase - 100A</option>
+                                    <option value="3 PHASE 200A" selected >3-Phase - 200A</option>
+                                    <option value="3 PHASE 400A">3-Phase - 400A</option>
+                                <% } else if (venue.power==="3 PHASE 400A") { %>
+                                  <option value="1 PHASE 100A" >Single-Phase - 100A</option>
+                                    <option value="3 PHASE 100A">3-Phase - 100A</option>
+                                    <option value="3 PHASE 200A" >3-Phase - 200A</option>
+                                    <% } %>                
+                    </select>
+                    <label>Union:</label>
+                    <select class="form-select form-select mb-3" name="union">
+                        <option value="Yes">Yes</option>
+                        <option value="No">No</option>
+                    </select>
+                    <input class="btn btn-outline-primary"  type="submit" value="Update Venue Info">
+                </form>
+            </section>
+        </div>
+        <div class="col-md-6">
+            <h3 class="text-center">Current Venues</h3>
+            <%- include('../venues/partials/allvenues') %>
+    
+        </div>
+    </div>
+    
+</div>
 
 
-
-    <h1>Current Venues</h1>
+    <!-- <h1>Current Venues</h1>
 
     <table id="venue-list">
         <tbody>
@@ -30,49 +83,8 @@
                 </tr>
                 <%}); %>
         </tbody>
-    </table>
+    </table> -->
 
-    <h1>Edit Venue</h1>
-    <section id="venue-details-input">
-        <form id="form-new-venue" action="/venues/<%= venue.id %>?_method=PUT " method="POST">
-            <label>Name:</label>
-            <input type="text" name="name" value="<%= venue.name %> ">
-            <label>City:</label>
-            <input type="text" name="city" value="<%=venue.city %> ">
-            <label>State: </label>
-            <input type="text" name="state" value="<%=venue.state %> ">
-            <label>Power:</label>
-            <select name="power">
-                <% if (venue.power==="1 PHASE 100A") { %>
-                    <option value="1 PHASE 100A" selected>Single-Phase - 100A</option>
-                    <option value="3 PHASE 100A">3-Phase - 100A</option>
-                    <option value="3 PHASE 200A" >3-Phase - 200A</option>
-                    <option value="3 PHASE 400A">3-Phase - 400A</option>
-                    
-                    <% } else if (venue.power==="3 PHASE 100A") { %>
-                        <option value="1 PHASE 100A" >Single-Phase - 100A</option>
-                        <option value="3 PHASE 100A" selected>3-Phase - 100A</option>
-                        <option value="3 PHASE 200A" >3-Phase - 200A</option>
-                        <option value="3 PHASE 400A">3-Phase - 400A</option>
-                        
-                        <% } else if (venue.power==="3 PHASE 200A") { %>
-                            <option value="1 PHASE 100A" >Single-Phase - 100A</option>
-                            <option value="3 PHASE 100A">3-Phase - 100A</option>
-                            <option value="3 PHASE 200A" selected >3-Phase - 200A</option>
-                            <option value="3 PHASE 400A">3-Phase - 400A</option>
-                        <% } else if (venue.power==="3 PHASE 400A") { %>
-                          <option value="1 PHASE 100A" >Single-Phase - 100A</option>
-                            <option value="3 PHASE 100A">3-Phase - 100A</option>
-                            <option value="3 PHASE 200A" >3-Phase - 200A</option>
-                            <% } %>                
-            </select>
-            <label>Union:</label>
-            <select name="union">
-                <option value="Yes">Yes</option>
-                <option value="No">No</option>
-            </select>
-            <input id="add-venue-button" type="submit" value="Update Venue Info">
-        </form>
-    </section>
+    
 
     <%- include('../partials/footer') %>
