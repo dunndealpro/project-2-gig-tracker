@@ -1,43 +1,15 @@
 <%- include('../partials/header') %>
-
-    <h1>
+<div class="container-fluid">
+    <h1 class=" text-center col-md-6">
         <%= title %>
     </h1>
+<div class="d-grid gap-2 col-md-6 overflow-auto">
+    <a class=" btn btn-primary list-button" id="add-worker" href="/workers/new">Add Worker</a>
 
-    <button class="button"><a class="list-button" id="add-worker" href="/workers/new">Add Worker</a></button>
+    <%- include('../workers/partials/allworkers') %>
+</div>
 
-    <table id="worker-list">
-        <thead>
-            <tr>
-                <th>Name</th>
-                <th>City</th>
-                <th>State</th>
-                <th></th>
-            </tr>
-        </thead>
-        <tbody>
-            <%workers.forEach(function(w){  %>
-                <tr>
-                    <td>
-                        <%= w.name %>
-                    </td>
-                    <td>
-                        <%= w.city %>
-                    </td>
-                    <td>
-                        <%= w.state %>
-                    </td>
-                    <td><button><a class="list-button" href="/workers/<%= w._id %>">SELECT</a></td></button>
-                        <td>
-                            <div>
-                                <form action="/workers/<%= w._id %>?_method=DELETE" class="delete-form" method="POST">
-                                    <button type="submit">X </button>
-                                </form>
-                            </div>
-                        </td>
-                </tr>
-                <%}); %>
-        </tbody>
-    </table>
+</div>
+    
 
     <%- include('../partials/footer') %>

@@ -1,69 +1,61 @@
 <%- include('../partials/header') %>
 
-    <h2>Current workers</h2>
 
-    <table id="worker-list">
-        <thead>
-            <tr>
-                <th>Name</th>
-                <th>City</th>
-                <th>State</th>
-                <th></th>
-            </tr>
-        </thead>
-        <tbody>
-            <%workers.forEach(function(w){  %>
-                <tr>
-                    <td>
-                        <%= w.name %>
-                    </td>
-                    <td>
-                        <%= w.city %>
-                    </td>
-                    <td>
-                        <%= w.state %>
-                    </td>
-                    <td><button><a class="list-button" href="/workers/<%= w._id %>">SELECT</a></td></button>
-                        <td>
-                            <div>
-                                <form action="/workers/<%= w._id %>?_method=DELETE" class="delete-form" method="POST">
-                                    <button type="submit">X </button>
-                                </form>
-                            </div>
-                        </td>
-                </tr>
-                <%}); %>
-        </tbody>
-    </table>
+<div class="container-fluid">
+    <h3 class="m-3 col-md-6 text-center">Enter New Worker </h3>
+    <div class="m-3 col-md-6">
+        <form  id="form-new-worker" action="/workers" method="POST">
+            <!-- <label>Name:</label> -->
+            <div class="form-floating mb-2">
+                <input class="form-control" id="floatingWorkerName" type="text" name="name" placeholder="Worker Name" required>
+                <label  for="floatingWorkerName">Worker Name</label>
+            </div>
+            <!-- <label>Phone Number: <br> (XXX-XXX-XXXX)</label> -->
+            <div class="form-floating mb-2">
+                <input class="form-control" type="tel" id="floatingPhone" name="phoneNumber" placeholder="Phone Number XXX-XXX-XXXX" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required>
+                <label  for="floatingPhone">Phone Number</label>
+            </div>
+            <!-- <label>City:</label> -->
+            <div class="form-floating mb-2">
+                <input class="form-control "type="text" id="floatingCity" name="city" placeholder="City" required>
+                <label  for="floatingCity">City</label>
+            </div>
+            <!-- <label>State: </label> -->
+            <div class="form-floating mb-2">
+                <input class="form-control " type="text" id="floatingState" name="state" placeholder="State" required>
+                <label  for="floatingState">State</label>
+            </div>
+            <!-- <label>Specialty:</label> -->
+            <div  class="form-floating mb-2">
+                <select class="form-select" id="floatingSpecialty" name="specialty" required>
+                    <option value="none" selected disabled hidden>--------</option>
+                    <option value="Audio Engineer">Audio Engineer</option>
+                    <option value="Audio Tech">Audio Tech</option>
+                    <option value='Lighting Engineer'>Lighting Engineer</option>
+                    <option value='Lighting Tech'>Lighting Tech</option>
+                    <option value="Video">Video</option>
+                    <option value="Rigging">Rigging</option>
+                    <option value="Stage Manager">Stage Manager</option>
+                    <option value="Stagehand">Stage Hand</option>
+                </select>
+                <label for="floatingSpecialty">Select a Specialty</label>
 
-    <h2>Enter New worker</h2>
-
-    <section id="worker-details-input">
-        <form id="form-new-worker" action="/workers" method="POST">
-            <label>Name:</label>
-            <input type="text" name="name">
-            <label>Phone Number: <br> (XXX-XXX-XXXX)</label>
-            <input type="tel" id="phone" name="phoneNumber" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required>
-            <label>City:</label>
-            <input type="text" name="city">
-            <label>State: </label>
-            <input type="text" name="state">
-            <label>Specialty:</label>
-            <select name="specialty">
-                <option value="none" selected disabled hidden>Select a Specialty</option>
-                <option value="Audio Engineer">Audio Engineer</option>
-                <option value="Audio Tech">Audio Tech</option>
-                <option value='Lighting Engineer'>Lighting Engineer</option>
-                <option value='Lighting Tech'>Lighting Tech</option>
-                <option value="Video">Video</option>
-                <option value="Rigging">Rigging</option>
-                <option value="Stage Manager">Stage Manager</option>
-                <option value="Stagehand">Stage Hand</option>
-            </select>
-            <label>Day Rate: </label>
-            <input type="number" name="dayRate">
-            <input id="add-worker-button" type="submit" value="Add Worker">
+            </div>
+            <!-- <label>Day Rate: </label> -->
+            <div class="form-floating mb-2">
+                <input class="form-control" id="floatingDayRate" type="number" name="dayRate" placeholder="Day Rate" required>
+                <label  for="floatingDayRate">Day Rate</label>
+            </div>
+            <input class="btn btn-outline-primary d-grid gap-2 col-8 mx-auto" id="add-worker-button" type="submit" value="Add Worker">
         </form>
-    </section>
+    </div>
+    <div class="col-md-6">
+        <h3 class="text-center">Current Workers</h3>
+        <%- include('../workers/partials/allworkers') %>
+
+    </div>
+</div>
+
+   
 
     <%- include('../partials/footer') %>

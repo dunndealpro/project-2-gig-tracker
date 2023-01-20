@@ -1,0 +1,50 @@
+<%workers.forEach(function(w){ %>
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">
+                <%= w.name %>
+            </h4>
+            <p class="card-text">
+                <%= w.specialty %>
+            </p>
+            <div class="d-grid gap-2 col-6 mx-auto ">
+                <a class="btn btn-outline-primary" href="/workers/<%= w._id %>">SELECT</a>
+            </div>
+            <div class="d-grid gap-2 col-6 mx-auto ">
+                <a class="btn btn-outline-danger" href="/workers/<%= w._id %>/delete" method="DELETE">Delete</a>
+            </div>
+
+        </div>
+    </div>
+    <%}); %>
+
+    <!-- <table class="table" id="worker-list">
+        <thead>
+            <tr>
+                <th scope="col">Name</th>
+                <th scope="col">Specialty</th>
+                
+            </tr>
+        </thead>
+        <tbody>
+            <%workers.forEach(function(w){  %>
+                <tr>
+                    <td>
+                        <%= w.name %>
+                    </td>
+                    <td>
+                        <%= w.specialty %>
+                    </td>
+                   
+                    <td><button><a class="list-button" href="/workers/<%= w._id %>">SELECT</a></td></button>
+                        <td>
+                            <div>
+                                <form action="/workers/<%= w._id %>?_method=DELETE" class="delete-form" method="POST">
+                                    <button type="submit">X </button>
+                                </form>
+                            </div>
+                        </td>
+                </tr>
+                <%}); %>
+        </tbody>
+    </table> -->

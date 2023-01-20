@@ -1,83 +1,60 @@
 <%- include('../partials/header') %>
-
-
-    <h1>
-        <%= title %>
-    </h1>
-
-    <table id="worker-list">
-        <thead>
-            <tr>
-                <th>Name</th>
-                <th>City</th>
-                <th>State</th>
-                <th></th>
-            </tr>
-        </thead>
-        <tbody>
-            <%workers.forEach(function(w){  %>
-                <tr>
-                    <td>
-                        <%= w.name %>
-                    </td>
-                    <td>
-                        <%= w.city %>
-                    </td>
-                    <td>
-                        <%= w.state %>
-                    </td>
-                    <td>
-                        <button><a class="list-button" href="/workers/<%= w._id %>">SELECT</a></button>
-
-                    </td>
-                    <td>
-                        <div>
-                            <form action="/workers/<%= w._id %>?_method=DELETE" class="delete-form" method="POST">
-                                <button type="submit">X </button>
-                            </form>
-                        </div>
-                    </td>
-                </tr>
-                <%}); %>
-        </tbody>
-    </table>
-
-    <section id="worker-details-input">
-        <h2>Edit Worker</h2>
-        <form id="form-new-worker" action="/workers/<%= worker.id %>?_method=PUT" method="POST" autocomplete="off">
-            <label>Name:</label>
-            <input type="text" name="name" value="<%= worker.name %> ">
-            <label>Phone Number:</label>
-            <input type="tel" id="phone" name="phoneNumber" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required value="<%= worker.phoneNumber %>">
-            <label>City:</label>
-            <input type="text" name="city" value="<%= worker.city %> ">
-            <label>State: </label>
-            <input type="text" name="state" value="<%= worker.state %> ">
-            <label>Specialty:</label>
-            <select name="specialty">
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-6">
+            <h1>Edit Worker</h1>
+            <div class="card">
+                <div class="card-body">
+                    <section id="worker-details-input">                
+                        <form id="form-new-worker" action="/workers/<%= worker.id %>?_method=PUT" method="POST" autocomplete="off">
+                            <label>Name:</label>
+                            <input class="form-control" type="text" name="name" value="<%= worker.name %> ">
+                            <label>Phone Number:</label>
+                            <input class="form-control" type="tel" id="phone" name="phoneNumber" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required value="<%= worker.phoneNumber %>">
+                            <label>City:</label>
+                            <input class="form-control" type="text" name="city" value="<%= worker.city %> ">
+                            <label>State: </label>
+                            <input class="form-control" type="text" name="state" value="<%= worker.state %> ">
+                            <label>Specialty:</label>
+                            <select class="form-select form-select mb-3" name="specialty">
+                                
+                                <option value="<%= worker.specialty%> "><%=  worker.specialty%> </option>
+                                <option value="Audio Engineer">Audio Engineer</option>
+                                <option value="Audio Tech">Audio Tech</option>
+                                <option value='Lighting Engineer'>Lighting Engineer</option>
+                                <option value='Lighting Tech'>Lighting Tech</option>
+                                <option value="Video">Video</option>
+                                <option value="Rigging">Rigging</option>
+                                <option value="Stage Manager">Stage Manager</option>
+                                <option value="Stagehand">Stage Hand</option>
                 
-                <option value="<%= worker.specialty%> "><%=  worker.specialty%> </option>
-                <option value="Audio Engineer">Audio Engineer</option>
-                <option value="Audio Tech">Audio Tech</option>
-                <option value='Lighting Engineer'>Lighting Engineer</option>
-                <option value='Lighting Tech'>Lighting Tech</option>
-                <option value="Video">Video</option>
-                <option value="Rigging">Rigging</option>
-                <option value="Stage Manager">Stage Manager</option>
-                <option value="Stagehand">Stage Hand</option>
+                            </select>
+                
+                
+                            <label>Day Rate: </label>
+                            <input class="form-control"  type="number" name="dayRate" value="<%= worker.dayRate %>">
+                            <!-- <label>Venues Worked at: </label> -->
+                            <!-- insert forEach loop here to create check box options -->
+                
+                
+                            <input class="btn btn-outline-primary mt-2" id="add-venue-button" type="submit" value="Update Worker Info ">
+                        </form>
+                
+                    </section>
+                </div>
+            </div>
+            
+        </div>
+        <div class="col-md-6">
+            <h3 class="text-center">Current workers</h3>
+            <%- include('../workers/partials/allworkers') %>
+    
+        </div>
 
-            </select>
+    </div>
 
+</div>
 
-            <label>Day Rate: </label>
-            <input type="number" name="dayRate" value="<%= worker.dayRate %>">
-            <!-- <label>Venues Worked at: </label> -->
-            <!-- insert forEach loop here to create check box options -->
-
-
-            <input id="add-venue-button" type="submit" value="Update Worker Info ">
-        </form>
-
-    </section>
+    
 
     <%- include('../partials/footer') %>
