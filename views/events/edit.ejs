@@ -1,11 +1,11 @@
 <%- include('../partials/header') %>
 
 
-    <h1>
+    <!-- <h1>
         <%= title %>
-    </h1>
+    </h1> -->
 
-    <table id="event-list">
+    <!-- <table id="event-list">
 
         <tbody>
             <%events.forEach(function(e){  %>
@@ -29,9 +29,50 @@
                 <%}); %>
         </tbody>
     </table>
-    </section>
+    </section> -->
 
-    <section id="event-details-input">
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-6">
+            <h1 class="text-center">Edit Event</h1> 
+            <div class="card">
+                <div class="card-body">
+                    <section id="event-details-input">
+                        <form id="form-new-event" action="/events/<%= event.id %>?_method=PUT" method="POST">
+                            <label>Event Name:</label>
+                            <input class="form-control" type="text" name="name" value="<%= event.name %>">
+                            <label>Client/Promoter:</label>
+                            <input class="form-control" type="text" name="client" value="<%=event.client %>">
+                            <label>Event Date/Time:</label>
+                            <input class="form-control"type="datetime-local" name="date" value="<%= editDate %>">
+                            <label>Venue:</label>
+                            <select class="form-select form-select mb-3" name="venue">
+                                <option value="<%= event.venue %>" selected><%= venue.name %> </option>
+                            <%  venues.forEach(function(v){ %>
+                                <option value="<%=v._id%>">
+                            <%=v.name%>
+                                </option>
+                                <%})%>                
+                                    </select>
+                            </select>
+                            <input class="btn btn-outline-primary" id="edit-event-info" type="submit" value="Edit event Info">
+                        </form>
+                    </section>
+                
+                </div>
+            </div>
+            
+        </div>
+        <div class="col-md-6">
+            <h3 class="text-center">Current Events</h3>
+            <%- include('../events/partials/allevents') %>
+    
+        </div>
+    </div>
+
+</div>
+
+    <!-- <section id="event-details-input">
         <form id="form-new-event" action="/events/<%= event.id %>?_method=PUT" method="POST">
             <label>Event Name:</label>
             <input type="text" name="name" value="<%= event.name %>">
@@ -51,6 +92,6 @@
             </select>
             <input id="edit-event-info" type="submit" value="Edit event Info">
         </form>
-    </section>
+    </section> -->
 
     <%- include('../partials/footer') %>
