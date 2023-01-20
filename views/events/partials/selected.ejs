@@ -1,0 +1,53 @@
+<div class="card text-start">
+    <div class="card-body">
+        <h2 class="card-title">
+            <%= event.name %>
+        </h2>
+        <h3 class="card-subtitle text-muted">
+            Client: <%= event.client %>
+        </h3>
+        <p class="card-text fs-3">
+            <%= event.date.toDateString() %> <br>
+                <span class="card-text fs-4">
+                    <%= event.date.toLocaleTimeString() %>
+                </span>
+        </p>
+
+        <div class="accordion pb-2">
+            
+                <div class="accordion-item">
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingTwo">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                Workers Booked for Gig
+                            </button>
+                        </h2>
+                        <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
+                            data-bs-parent="#accordionExample">
+                            <div class="accordion-body pt-2">
+                                <strong><%- event.workers.map(w=>
+                                        `${w.name} - ${w.specialty} <br>
+                                        <form id="remove-worker-to-event" action="/events/${event._id}/remove/${w._id} "
+                                            method="POST"><button class="btn btn-danger btn-sm " type= submit">Remove from
+                                                Event</button></form>` ).join('') %></strong>
+                                
+                            </div>
+                        </div>
+                    </div>
+                
+            </div>
+
+        </div>
+        
+        <form class="form-control pt-2 " id="add-worker-to-event" action="/events/<%= event._id %>/worker" method="POST">
+            
+            <select class="form-control form-select pt-2 pb-2" name="workerId">
+                <option selected>Add Workers to Event</option>
+                <%- workers.map(w=> `<option value="${w._id}">${w.name} - ${w.specialty}</option>`) %>
+            </select>
+            <button class="btn btn-primary mt-2" type="submit">Add Worker to Event</button>
+        </form>
+
+    </div>
+</div>

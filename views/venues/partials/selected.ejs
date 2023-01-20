@@ -24,8 +24,8 @@
                 <ul class="dropdown-menu">
                     
                     <%- venue.events.map(e=>
-                    `<li>${e.name} <button> <a class="list-button" href="/events/${e._id}">SELECT</a>
-                        </button></li>
+                    `<li> <a class="dropdown-item" href="/events/${e._id}">${e.name}</a>
+                        </li>
                     `
                     ).join('') %>
                 </ul>

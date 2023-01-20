@@ -1,51 +1,32 @@
 <%- include('../partials/header') %>
-    <h1>
-        <%= title %>
-    </h1>
+  
 
-    <table id="event-list">
-        <tbody>
-            <%events.forEach(function(e){  %>
-                <tr>
-                    <td>
-                        <%= e.name %>
-                    </td>
-                    <td>
-                        <%= e.date.toDateString() %>
-                    </td>
-
-                    <td><button><a class="list-button"href="/events/<%= e._id %>">SELECT</a></td></button>
-                        <td>
-                            <div>
-                                <form action="/events/<%= e._id %>?_method=DELETE" class="delete-form" method="POST">
-                                    <button type="submit">X </button>
-                                </form>
-                            </div>
-                        </td>
-                </tr>
-                <%}); %>
-        </tbody>
-    </table>
-    </section>
-
-    <h1>Enter New event</h1>
-    <section id="event-details-input">
+    <h3 class="mb-3  col-md-6 text-center">Enter New Event</h3>
+    <div class="mb-3  col-md-6">
         <form id="form-new-event" action="/events" method="POST">
-            <label>Event Name:</label>
-            <input type="text" name="name">
-            <label>Client/Promoter:</label>
-            <input type="text" name="client">
-            <label>Event Date/Time:</label>
-            <input type="datetime-local" name="date" value="<%=defaultDate%>">
-            <label>Venues:</label>
-            <select name="venue">
+            <!-- <label>Event Name:</label> -->
+            <input class="form-control" type="text" placeholder="Event Name"  name="name">
+            <!-- <label>Client/Promoter:</label> -->
+            <input  class="form-control" type="text" placeholder="Client/Promoter" name="client">
+            <!-- <label>Event Date/Time:</label> -->
+            <input class="form-control" type="datetime-local" name="date" value="<%=defaultDate%>">
+            <!-- <label>Venues:</label> -->
+            <select class="form-select form-select mb-3" name="venue">
+                <option>Select a Venue</option>
             <%  venues.forEach(function(v){ %>
+                
                 <option value="<%=v._id%>"><%=v.name%></option>
             <%})%> 
              </select>
-            <input id="add-event-button" type="submit" value="Add event">
+            <input class="btn btn-outline-primary d-grid gap-2 col-8 mx-auto" id="add-event-button" type="submit" value="Add event">
         </form>
 
-    </section>
+    </div>
+    <div class="col-md-6">
+        <h3 class="text-center">Current Events</h3>
+        <%- include('../events/partials/allevents')  %> 
 
+    </div>
+    
+    
     <%- include('../partials/footer') %>
