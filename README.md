@@ -25,6 +25,7 @@
 - MongoDB
 - Node.js
 - Express
+- Bootstrap
 - HTML5
 - CSS 3
 - JavaScript ES6
