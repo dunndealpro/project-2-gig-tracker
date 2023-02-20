@@ -10,9 +10,6 @@ router.get('/events/:id', isLoggedIn, eventsCtrl.show);
 router.post('/events/', isLoggedIn, eventsCtrl.create);
 router.get('/events/:id/edit', isLoggedIn, eventsCtrl.editEventDetails);
 router.get('/events/:id/:id1', isLoggedIn, eventsCtrl.detailed)
-
-// router.post('/events/:id/worker', isLoggedIn, workersCtrl.addToEvent);
-// router.get('/events/:id/edit', isLoggedIn, eventsCtrl.editeventDetails);
 router.put('/events/:id', isLoggedIn, eventsCtrl.updateEvent);
 
 module.exports = router

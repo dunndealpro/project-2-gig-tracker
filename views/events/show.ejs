@@ -6,9 +6,7 @@
             <h1>Selected Event Details</h1> <div class="d-grid gap-2 col overflow-auto">
                 <a class="btn btn-primary" href="/events/<%= event._id %>/edit">Edit event details</a>
                 <%- include('../events/partials/selected') %>
-
             </div>
-            
         </div>
         <div class="col-md">
             <h1>Current events</h1>
@@ -17,104 +15,6 @@
                 <%- include('../events/partials/allevents') %>
             </div>
         </div>
-
     </div>
-
-<!-- </div>
-
-    <h1>
-        <%= title %>
-    </h1>
-
-    <button class="button"><a id="add-event" href="/events/new">Add event</a></button>
-    <button class="button"><a id="add-event" href="/events/<%= event._id %>/edit">Edit event details</a></button>
-
-    <section id="event-list">
-        <table>
-            <tbody>
-                <%events.forEach(function(e){  %>
-                    <tr>
-                        <td>
-                            <%= e.name %>
-                        </td>
-                        <td>
-                            <%= e.date.toDateString() %>
-                        </td>
-                        <td><button><a class='list-button' href="/events/<%= e._id %>">SELECT</a></td></button>
-                            <td>
-                                <div>
-                                    <form action="/events/<%= e._id %>?_method=DELETE" class="delete-form" method="POST">
-                                        <button type="submit">Delete </button>
-                                    </form>
-                                </div>
-                            </td>
-                    </tr>
-                    <%}); %>
-            </tbody>
-        </table>
-    </section>
-
-    <h1>Event Details</h1>
-    <section id="event-details">
-        <div>
-            Event Name:
-            <%= event.name %>
-        </div>
-        <div>
-            Client Name:
-            <%= event.client %>
-        </div>
-        <div>
-            Date:
-            <%= event.date.toDateString() %>
-        </div>
-        <div>
-            Event Start(Doors):
-            <%= event.date.toLocaleTimeString() %>
-        </div>
-        <br>
-        <div>
-            Workers:
-        </div>
-        <div>
-            <ul>
-                <%- event.workers.map(w => 
-                  `<li>${w.name} - ${w.specialty} <br>
-                    <form id="remove-worker-to-event" action="/events/${event._id}/remove/${w._id} "method="POST"><button class="list-button" type="submit">Remove from Event</button></form><button class="list-button"><a class="list-button" href="/events/${event._id}/${w._id}">Details</a></button></li>` ).join('') %>
-            </ul>
-        </div>
-        <br>
-        <div>Add Workers to Event</div>
-        <form id="add-worker-to-event" action="/events/<%= event._id %>/worker" method="POST">
-            <select name="workerId">
-            <%- workers.map(w => `<option value="${w._id}">${w.name} - ${w.specialty}</option>`) %> 
-            </select>
-            <button type="submit">Add Worker to Event</button>
-        </form>
-    </section>
-
-    <h1>Venue Details</h1>
-    <section id="selected-details">
-        <div>
-            Venue Name:
-            <%= venue.name %>
-        </div>
-        <div>
-            City:
-            <%= venue.city %>
-        </div>
-        <div>
-            State:
-            <%= venue.state %>
-        </div>
-        <div>
-            Power Service:
-            <%= venue.power %>
-        </div>
-        <div>
-            Union:
-            <%= venue.union %>
-        </div>
-    </section> -->
 
     <%- include('../partials/footer') %>

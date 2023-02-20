@@ -1,46 +1,12 @@
 <%- include('../partials/header') %>
-<div class="container-fluid">
-    <h1 class="text-center col-md-6">
-        <%= title %>
-    </h1>
-    <div class="d-grid gap-2 col-md-6 overflow-auto">
-        <a class="btn btn-primary" id="add-event" href="/events/new">Add event</a>
-        <%- include('../events/partials/allevents')  %> 
-
-
+    <div class="container-fluid">
+        <h1 class="text-center col-md-6">
+            <%= title %>
+        </h1>
+        <div class="d-grid gap-2 col-md-6 overflow-auto">
+            <a class="btn btn-primary" id="add-event" href="/events/new">Add event</a>
+            <%- include('../events/partials/allevents') %>
+        </div>
     </div>
 
-</div>
-
-
-            <!-- <section id="event-list">
-
-                <table>
-                    <tbody>
-                        <%events.forEach(function(e){ %>
-                            <tr>
-                                <td>
-                                    <%= e.name %>
-                                </td>
-                                <td>
-                                    <%= e.date.toDateString() %>
-                                </td>
-
-                                <td><button><a class="list-button" href="/events/<%= e._id %>">SELECT</a></td></button>
-                                <td>
-                                    <div>
-                                        <form action="/events/<%= e._id %>?_method=DELETE" class="delete-form"
-                                            method="POST">
-                                            <button type="submit">DELETE </button>
-                                        </form>
-                                    </div>
-                                </td>
-                            </tr>
-                            <%}); %>
-                    </tbody>
-                </table>
-            </section> -->
-
-            <!-- <button class="button"><a id="add-event" href="/events/new">Add event</a></button> -->
-
-            <%- include('../partials/footer') %>
+    <%- include('../partials/footer') %>

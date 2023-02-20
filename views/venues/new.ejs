@@ -1,16 +1,11 @@
 <%- include('../partials/header') %>
 
-
-
     <div class="container-fluid ">
         <h3 class="mb-3  col-md-6 text-center">Enter New Venue</h3>
         <div class="mb-3  col-md-6">
             <form id="form-new-venue" action="/venues" method="POST">
-                <!-- <label for="form-new-venue" class="form-label">Venue Name</label> -->
                 <input type="text" class="form-control" id="form-new-venue" placeholder="Venue Name"  name="name">
-                <!-- <label for="form-new-venue" class="form-label">Venue City</label> -->
                 <input type="text" class="form-control" id="form-new-venue" placeholder="Venue City" name="city">
-                <!-- <label for="form-new-venue" class="form-label">Venue State</label> -->
                 <input type="text" class="form-control" id="form-new-venue" placeholder="Venue State" name="state">
                 <select name="power"class="form-select form-select mb-3" aria-label=".form-select example">
                     <option >Select Power</option>
@@ -31,10 +26,6 @@
         <div class="col-md-6">
             <h3 class="text-center">Current Venues</h3>
             <%- include('../venues/partials/allvenues') %>
-
         </div>
-    </div>
-
-    <div class="container-fluid">
     </div>
     <%- include('../partials/footer') %>

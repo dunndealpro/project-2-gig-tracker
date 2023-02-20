@@ -5,27 +5,22 @@
     <h3 class="m-3 col-md-6 text-center">Enter New Worker </h3>
     <div class="m-3 col-md-6">
         <form  id="form-new-worker" action="/workers" method="POST">
-            <!-- <label>Name:</label> -->
             <div class="form-floating mb-2">
                 <input class="form-control" id="floatingWorkerName" type="text" name="name" placeholder="Worker Name" required>
                 <label  for="floatingWorkerName">Worker Name</label>
             </div>
-            <!-- <label>Phone Number: <br> (XXX-XXX-XXXX)</label> -->
             <div class="form-floating mb-2">
                 <input class="form-control" type="tel" id="floatingPhone" name="phoneNumber" placeholder="Phone Number XXX-XXX-XXXX" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required>
                 <label  for="floatingPhone">Phone Number</label>
             </div>
-            <!-- <label>City:</label> -->
             <div class="form-floating mb-2">
                 <input class="form-control "type="text" id="floatingCity" name="city" placeholder="City" required>
                 <label  for="floatingCity">City</label>
             </div>
-            <!-- <label>State: </label> -->
             <div class="form-floating mb-2">
                 <input class="form-control " type="text" id="floatingState" name="state" placeholder="State" required>
                 <label  for="floatingState">State</label>
             </div>
-            <!-- <label>Specialty:</label> -->
             <div  class="form-floating mb-2">
                 <select class="form-select" id="floatingSpecialty" name="specialty" required>
                     <option value="none" selected disabled hidden>--------</option>
@@ -41,7 +36,6 @@
                 <label for="floatingSpecialty">Select a Specialty</label>
 
             </div>
-            <!-- <label>Day Rate: </label> -->
             <div class="form-floating mb-2">
                 <input class="form-control" id="floatingDayRate" type="number" name="dayRate" placeholder="Day Rate" required>
                 <label  for="floatingDayRate">Day Rate</label>
@@ -52,11 +46,8 @@
     <div class="col-md-6">
         <h3 class="text-center">Current Workers </h3>
         <%- include('../workers/partials/allworkers') %>
-        <div></div>
 
     </div>
-</div>
-
-   
+</div>   
 
     <%- include('../partials/footer') %>

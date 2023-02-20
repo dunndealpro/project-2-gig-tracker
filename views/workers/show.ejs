@@ -7,8 +7,7 @@
             <h1>Selected worker Details</h1> <div class="d-grid gap-2 col ">
                 <a class="btn btn-primary" href="/workers/<%= worker._id %>/edit">Edit worker details</a>
                 <%- include('../workers/partials/selected') %>
-            </div>
-            
+            </div>            
         </div>
         <div class="col-md">
             <h1>Current workers</h1>
@@ -17,23 +16,14 @@
                 <%- include('../workers/partials/allworkers') %>
             </div>
         </div>
-
     </div>
-
 </div>
-
-
 
     <h1>
         <%= title %>
     </h1>
 
-    <table id="worker-list">
-        <thead>
-            <tr>
-
-            </tr>
-        </thead>
+    <table id="worker-list">       
         <tbody>
             <%workers.forEach(function(w){  %>
                 <tr>
@@ -96,10 +86,7 @@
                 ).join('') %>
             </ul>
         </div>
-
         <button><a class = "list-button" href="/workers/<%= worker._id %>/edit">Edit worker details</a></button>
-
-
     </section>
 
     <%- include('../partials/footer') %>

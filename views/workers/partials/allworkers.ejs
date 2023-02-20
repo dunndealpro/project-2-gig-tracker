@@ -13,20 +13,9 @@
             <div class="d-grid gap-2 col-6 mx-auto ">
                 <a class="btn btn-outline-danger" href="/workers/<%= w._id %>/delete" method="DELETE">Delete</a>
             </div>
-
         </div>
     </div>
     <%}); %>
-
-    <!-- <table class="table" id="worker-list">
-        <thead>
-            <tr>
-                <th scope="col">Name</th>
-                <th scope="col">Specialty</th>
-                
-            </tr>
-        </thead>
-        <tbody>
             <%workers.forEach(function(w){  %>
                 <tr>
                     <td>
@@ -35,7 +24,6 @@
                     <td>
                         <%= w.specialty %>
                     </td>
-                   
                     <td><button><a class="list-button" href="/workers/<%= w._id %>">SELECT</a></td></button>
                         <td>
                             <div>

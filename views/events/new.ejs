@@ -1,32 +1,22 @@
 <%- include('../partials/header') %>
-  
-
     <h3 class="mb-3  col-md-6 text-center">Enter New Event</h3>
     <div class="mb-3  col-md-6">
         <form id="form-new-event" action="/events" method="POST">
-            <!-- <label>Event Name:</label> -->
             <input class="form-control" type="text" placeholder="Event Name"  name="name">
-            <!-- <label>Client/Promoter:</label> -->
             <input  class="form-control" type="text" placeholder="Client/Promoter" name="client">
-            <!-- <label>Event Date/Time:</label> -->
             <input class="form-control" type="datetime-local" name="date" value="<%=defaultDate%>">
-            <!-- <label>Venues:</label> -->
             <select class="form-select form-select mb-3" name="venue">
                 <option>Select a Venue</option>
             <%  venues.forEach(function(v){ %>
-                
                 <option value="<%=v._id%>"><%=v.name%></option>
             <%})%> 
              </select>
             <input class="btn btn-outline-primary d-grid gap-2 col-8 mx-auto" id="add-event-button" type="submit" value="Add event">
         </form>
-
     </div>
     <div class="col-md-6">
         <h3 class="text-center">Current Events</h3>
         <%- include('../events/partials/allevents')  %> 
-
     </div>
-    
     
     <%- include('../partials/footer') %>

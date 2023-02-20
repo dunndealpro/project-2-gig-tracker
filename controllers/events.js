@@ -49,11 +49,8 @@ function updateEvent(req, res) {
         event.date = req.body.date,
         event.venue = newVenue,
         Venue.findById(oldVenue, function(err, venueOld){
-            console.log("huh", venueOld)
             idx=venueOld.events.indexOf(event._id)
             venueOld.events.splice(idx, 1)
-            console.log(venueOld.events)
-            console.log(newVenue)
             venueOld.save()
         })
         Venue.findById(newVenue, function(err, venueNew){
@@ -70,11 +67,9 @@ function updateEvent(req, res) {
     Venue.findById(req.body.venue, function(err, venue){
         Venue.events
     })
-    console.log("update working?")
 }
 
 function addToEvent(req, res) {
-    console.log("wanna do me a push?")
     Event.findById(req.params.id, function(err, event) {
         event.workers.push(req.body.workerId)
         event.save(function(err) {

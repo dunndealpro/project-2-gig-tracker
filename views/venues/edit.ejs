@@ -18,13 +18,11 @@
                             <option value="3 PHASE 100A">3-Phase - 100A</option>
                             <option value="3 PHASE 200A" >3-Phase - 200A</option>
                             <option value="3 PHASE 400A">3-Phase - 400A</option>
-                            
                             <% } else if (venue.power==="3 PHASE 100A") { %>
                                 <option value="1 PHASE 100A" >Single-Phase - 100A</option>
                                 <option value="3 PHASE 100A" selected>3-Phase - 100A</option>
                                 <option value="3 PHASE 200A" >3-Phase - 200A</option>
                                 <option value="3 PHASE 400A">3-Phase - 400A</option>
-                                
                                 <% } else if (venue.power==="3 PHASE 200A") { %>
                                     <option value="1 PHASE 100A" >Single-Phase - 100A</option>
                                     <option value="3 PHASE 100A">3-Phase - 100A</option>
@@ -48,43 +46,8 @@
         <div class="col-md-6">
             <h3 class="text-center">Current Venues</h3>
             <%- include('../venues/partials/allvenues') %>
-    
         </div>
     </div>
-    
-</div>
-
-
-    <!-- <h1>Current Venues</h1>
-
-    <table id="venue-list">
-        <tbody>
-            <%venues.forEach(function(v){  %>
-                <tr>
-                    <td>
-                        <%= v.name %>
-                    </td>
-                    <td>
-                        <%= v.city %>
-                    </td>
-                    <td>
-                        <%= v.state %>
-                    </td>
-                    <td>
-                        <button><a class="list-button" href="/venues/<%= v._id %>">SELECT</a></button>
-                    </td>
-                    <td>
-                        <div>
-                            <form action="/venues/<%= v._id %>?_method=DELETE" class="delete-form" method="POST">
-                                <button type="submit">X </button>
-                            </form>
-                        </div>
-                    </td>
-                </tr>
-                <%}); %>
-        </tbody>
-    </table> -->
-
-    
+</div>    
 
     <%- include('../partials/footer') %>

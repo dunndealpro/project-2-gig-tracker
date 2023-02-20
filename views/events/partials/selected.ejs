@@ -41,14 +41,12 @@
         </div>
         <div class="d-flex mb-3">
             <form class="form-control pt-2 " id="add-worker-to-event" action="/events/<%= event._id %>/worker" method="POST">
-                
                 <select class="form-control form-select pt-2 pb-2" name="workerId">
                     <option selected>Add Workers to Event</option>
                     <%- workers.map(w=> `<option value="${w._id}">${w.name} - ${w.specialty}</option>`) %>
                 </select>
                 <button class="ms-auto p-2 btn btn-primary mt-2 d-flex justify-content-end" type="submit">Add Worker to Event</button>
             </form>
-
         </div>
 
         <div class="accordion pb-2" id="accordianExample">
@@ -64,7 +62,6 @@
                     <div id="collapseVenueDetails" class="accordion-collapse collapse" aria-labelledby="headingTwo"
                         data-bs-parent="#accordionExample">
                         <div class="accordion-body pt-2">
-                            
                                 <section id="selected-details">
                                     <div>
                                         Venue Name:
@@ -87,14 +84,10 @@
                                         <%= venue.union %>
                                     </div>
                                 </section>
-                            
-                            
                         </div>
                     </div>
                 </div>
-            
         </div>
     </div>
-
 </div>
 </div>
